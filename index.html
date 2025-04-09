@@ -7,25 +7,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/3010d94d2f.js" crossorigin="anonymous"></script>
     <style>
         :root {
-            --mambu-primary: #00B090;
-            --mambu-secondary: #333333;
-            --mambu-light: #F8F9FA;
-            --mambu-gray: #666666;
-            --mambu-light-gray: #EEEEEE;
+            --mambu-primary: #00B090; /* Adjusted Mambu Green */
+            --mambu-secondary: #333333; /* Dark Text */
+            --mambu-light: #F8F9FA; /* Light Background */
+            --mambu-gray: #666666; /* Medium Text */
+            --mambu-light-gray: #EEEEEE; /* Borders */
             --mambu-gradient: linear-gradient(135deg, #00B090 0%, #008F75 100%);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--mambu-secondary);
@@ -35,14 +36,14 @@
             min-height: 100vh;
             width: 100%;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
             width: 100%;
         }
-        
+
         /* Header Styles */
         .header {
             position: fixed;
@@ -57,32 +58,35 @@
             transition: var(--transition);
             width: 100%;
         }
-        
+
         .header.scrolled {
             padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
-        
+
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%; /* Ensure container takes full width */
         }
-        
+
         .logo {
             font-size: 24px;
             font-weight: 700;
             color: var(--mambu-secondary);
+            text-decoration: none; /* Remove potential underline if linked */
         }
-        
+
         .logo span {
             color: var(--mambu-primary);
         }
-        
+
         .nav-links {
             display: flex;
             align-items: center;
         }
-        
+
         .nav-link {
             margin-left: 30px;
             color: var(--mambu-secondary);
@@ -91,7 +95,7 @@
             position: relative;
             transition: var(--transition);
         }
-        
+
         .nav-link:after {
             content: '';
             position: absolute;
@@ -102,15 +106,15 @@
             background-color: var(--mambu-primary);
             transition: var(--transition);
         }
-        
+
         .nav-link:hover {
             color: var(--mambu-primary);
         }
-        
+
         .nav-link:hover:after {
             width: 100%;
         }
-        
+
         .download-btn {
             display: inline-block;
             background-color: var(--mambu-primary);
@@ -121,14 +125,16 @@
             font-weight: 600;
             margin-left: 30px;
             transition: var(--transition);
+            border: none; /* Ensure no border */
+            cursor: pointer;
         }
-        
+
         .download-btn:hover {
-            background-color: #008F75;
+            background-color: #008F75; /* Darker shade */
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 176, 144, 0.2);
         }
-        
+
         .mobile-toggle {
             display: none;
             background: none;
@@ -137,37 +143,43 @@
             font-size: 24px;
             cursor: pointer;
         }
-        
+        .close-menu { display: none; } /* Hide close button by default */
+
         /* Hero Section */
         .hero {
-            padding: 140px 0 100px;
+            padding: 140px 0 100px; /* Adjust top padding for fixed header */
             background-color: #FFFFFF;
             position: relative;
             overflow: hidden;
             width: 100%;
-            min-height: 100vh;
-            display: block;
+            min-height: 100vh; /* Ensure it takes full viewport height */
+            display: flex; /* Use flex for alignment */
+            align-items: center; /* Center content vertically */
         }
-        
+
         .hero-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
+            width: 100%; /* Ensure grid takes container width */
         }
-        
+
         .hero-image {
             position: relative;
         }
-        
+
         .profile-img {
             width: 100%;
+            max-width: 450px; /* Control max size */
             height: auto;
             border-radius: 10px;
             box-shadow: var(--shadow);
             border: 5px solid white;
+            display: block; /* Prevent extra space below image */
+            margin: 0 auto; /* Center if needed on smaller grid columns */
         }
-        
+
         .hero-badge {
             position: absolute;
             bottom: -20px;
@@ -178,58 +190,62 @@
             border-radius: 10px;
             font-weight: 600;
             box-shadow: var(--shadow);
-            display: flex;
+            display: inline-flex; /* Use inline-flex */
             align-items: center;
             gap: 10px;
         }
-        
+
         .hero-badge i {
             font-size: 24px;
         }
-        
+
         .hero-content {
             position: relative;
         }
-        
+
         .hero-content h1 {
             font-size: 48px;
             line-height: 1.2;
             margin-bottom: 20px;
             color: var(--mambu-secondary);
+            font-weight: 700;
         }
-        
+
         .hero-content h1 span {
             color: var(--mambu-primary);
         }
-        
+
         .hero-subtitle {
             font-size: 20px;
             color: var(--mambu-gray);
             margin-bottom: 30px;
+            max-width: 500px; /* Limit width */
         }
-        
+
         .stats {
             display: flex;
             gap: 30px;
             margin-top: 30px;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
         }
-        
+
         .stat-item {
             flex: 1;
+            min-width: 100px; /* Ensure items have minimum width */
         }
-        
+
         .stat-value {
             font-size: 36px;
             font-weight: 700;
             color: var(--mambu-primary);
             margin-bottom: 5px;
         }
-        
+
         .stat-label {
             font-size: 16px;
             color: var(--mambu-gray);
         }
-        
+
         .hero-shape-1 {
             position: absolute;
             top: -100px;
@@ -238,9 +254,10 @@
             height: 300px;
             background: linear-gradient(135deg, rgba(0, 176, 144, 0.1) 0%, rgba(0, 176, 144, 0) 70%);
             border-radius: 50%;
-            z-index: -1;
+            z-index: -1; /* Ensure behind content */
+            pointer-events: none; /* Ignore mouse */
         }
-        
+
         .hero-shape-2 {
             position: absolute;
             bottom: -150px;
@@ -250,14 +267,16 @@
             background: linear-gradient(135deg, rgba(0, 176, 144, 0.05) 0%, rgba(0, 176, 144, 0) 70%);
             border-radius: 50%;
             z-index: -1;
+            pointer-events: none;
         }
-        
+
         .hero-cta {
             display: flex;
             gap: 15px;
             margin-top: 40px;
+            flex-wrap: wrap; /* Allow buttons to wrap */
         }
-        
+
         .primary-btn {
             display: inline-block;
             background: var(--mambu-gradient);
@@ -267,13 +286,15 @@
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
-        
+
         .primary-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 176, 144, 0.2);
         }
-        
+
         .secondary-btn {
             display: inline-flex;
             align-items: center;
@@ -286,40 +307,45 @@
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
+            cursor: pointer;
         }
-        
+
+        .secondary-btn i {
+            font-size: 16px; /* Icon size */
+        }
+
         .secondary-btn:hover {
             border-color: var(--mambu-primary);
             color: var(--mambu-primary);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         }
-        
+
         /* Quote Section */
         .quote-section {
             padding: 80px 0;
             background-color: var(--mambu-light);
             position: relative;
             width: 100%;
-            display: block;
+            display: block; /* Use block */
         }
-        
+
         .quote-container {
             max-width: 900px;
             margin: 0 auto;
             text-align: center;
             position: relative;
         }
-        
+
         .quote-text {
             font-size: 24px;
             line-height: 1.6;
             color: var(--mambu-secondary);
             font-style: italic;
             position: relative;
-            padding: 0 50px;
+            padding: 0 50px; /* Space for quotes */
         }
-        
+
         .quote-text:before,
         .quote-text:after {
             content: '"';
@@ -329,37 +355,38 @@
             opacity: 0.1;
             line-height: 0;
         }
-        
+
         .quote-text:before {
             left: 0;
-            top: 30px;
+            top: 30px; /* Adjust vertical position */
         }
-        
+
         .quote-text:after {
             right: 0;
-            bottom: 0;
+            bottom: -10px; /* Adjust vertical position */
         }
-        
+
         .quote-author {
             margin-top: 30px;
             font-weight: 600;
             color: var(--mambu-primary);
         }
-        
+
         /* Alignment Section */
         .alignment {
             padding: 100px 0;
             position: relative;
             width: 100%;
             display: block;
+            background-color: #FFFFFF; /* White background */
         }
-        
+
         .section-header {
             text-align: center;
             max-width: 800px;
             margin: 0 auto 60px;
         }
-        
+
         .section-title {
             font-size: 36px;
             color: var(--mambu-secondary);
@@ -367,7 +394,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .section-title:after {
             content: '';
             position: absolute;
@@ -378,32 +405,34 @@
             height: 3px;
             background-color: var(--mambu-primary);
         }
-        
+
         .section-subtitle {
             font-size: 18px;
             color: var(--mambu-gray);
         }
-        
+
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
-        
+
         .card {
             background-color: white;
             border-radius: 10px;
             box-shadow: var(--shadow);
             padding: 40px 30px;
             transition: var(--transition);
-            height: 100%;
+            height: 100%; /* Make cards same height if needed */
+            display: flex; /* Use flex for content alignment */
+            flex-direction: column;
         }
-        
+
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
-        
+
         .card-icon {
             width: 60px;
             height: 60px;
@@ -413,24 +442,26 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
+            flex-shrink: 0; /* Prevent icon from shrinking */
         }
-        
+
         .card-icon i {
             font-size: 24px;
             color: var(--mambu-primary);
         }
-        
+
         .card-title {
             font-size: 22px;
             margin-bottom: 15px;
             color: var(--mambu-secondary);
         }
-        
+
         .card-text {
             color: var(--mambu-gray);
             font-size: 16px;
+            flex-grow: 1; /* Allow text to take remaining space */
         }
-        
+
         /* Experience Section */
         .experience {
             padding: 100px 0;
@@ -439,13 +470,13 @@
             width: 100%;
             display: block;
         }
-        
+
         .timeline {
             max-width: 900px;
             margin: 60px auto 0;
             position: relative;
         }
-        
+
         .timeline:before {
             content: '';
             position: absolute;
@@ -456,40 +487,45 @@
             height: 100%;
             background-color: var(--mambu-primary);
             opacity: 0.3;
+            z-index: 1; /* Behind dots */
         }
-        
+
         .timeline-item {
             position: relative;
             margin-bottom: 60px;
         }
-        
+
         .timeline-item:last-child {
             margin-bottom: 0;
         }
-        
+
         .timeline-content {
             background-color: white;
             border-radius: 10px;
             box-shadow: var(--shadow);
             padding: 30px;
             position: relative;
-            width: calc(50% - 50px);
+            width: calc(50% - 50px); /* Adjust width */
             transition: var(--transition);
+            z-index: 2; /* Above line */
         }
-        
+
         .timeline-content:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .timeline-item:nth-child(odd) .timeline-content {
             left: 0;
+            text-align: right; /* Align text right for odd items */
         }
-        
+
         .timeline-item:nth-child(even) .timeline-content {
-            left: calc(50% + 50px);
+            left: calc(50% + 50px); /* Adjust position */
+            text-align: left; /* Align text left for even items */
         }
-        
+
+        /* Arrow pointing to timeline dot */
         .timeline-content:before {
             content: '';
             position: absolute;
@@ -497,60 +533,92 @@
             width: 20px;
             height: 20px;
             background-color: white;
-            transform: rotate(45deg);
+            transform: translateY(-50%) rotate(45deg); /* Center vertically and rotate */
+            box-shadow: inherit; /* Inherit shadow */
+            z-index: -1; /* Behind content, but check */
         }
-        
+
         .timeline-item:nth-child(odd) .timeline-content:before {
-            right: -10px;
+            right: -10px; /* Position arrow */
+             box-shadow: 1px -1px 1px rgba(0,0,0,0.05); /* Shadow for arrow */
         }
-        
+
         .timeline-item:nth-child(even) .timeline-content:before {
-            left: -10px;
+            left: -10px; /* Position arrow */
+            box-shadow: -1px 1px 1px rgba(0,0,0,0.05); /* Shadow for arrow */
         }
-        
+
         .timeline-dot {
             position: absolute;
-            top: 20px;
+            top: 20px; /* Align with arrow base */
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%); /* Center dot exactly */
             width: 20px;
             height: 20px;
             background-color: var(--mambu-primary);
             border-radius: 50%;
-            z-index: 10;
+            z-index: 10; /* Above line and content arrow */
+            border: 3px solid white; /* White border around dot */
         }
-        
+
         .timeline-date {
             position: absolute;
-            top: 20px;
+            top: 15px; /* Align roughly with dot */
             font-weight: 600;
             color: var(--mambu-primary);
+            background-color: rgba(255, 255, 255, 0.8); /* Slight background */
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 5; /* Above line */
         }
-        
+
         .timeline-item:nth-child(odd) .timeline-date {
-            right: calc(50% + 70px);
+            right: calc(50% + 70px); /* Position date */
         }
-        
+
         .timeline-item:nth-child(even) .timeline-date {
-            left: calc(50% + 70px);
+            left: calc(50% + 70px); /* Position date */
         }
-        
+
         .timeline-title {
             font-size: 20px;
             margin-bottom: 5px;
             color: var(--mambu-secondary);
+            font-weight: 600;
         }
-        
+
         .timeline-company {
             color: var(--mambu-gray);
             margin-bottom: 15px;
             font-size: 16px;
+            font-style: italic;
         }
-        
+
         .timeline-text {
             color: var(--mambu-gray);
+            font-size: 15px;
         }
-        
+         .timeline-text ul {
+             padding-left: 0; /* Remove default padding */
+             margin-top: 10px;
+         }
+         .timeline-text li {
+             padding-left: 20px; /* Indent list items */
+             margin-bottom: 8px;
+             font-size: 14px; /* Smaller font for list items */
+             position: relative;
+             text-align: left; /* Ensure list items are left-aligned */
+         }
+         .timeline-text li::before {
+             content: '•'; /* Use bullet for lists */
+             color: var(--mambu-primary);
+             position: absolute;
+             left: 5px; /* Position bullet */
+             top: 0;
+         }
+
+
         /* Call to Action */
         .cta-section {
             padding: 100px 0;
@@ -560,7 +628,7 @@
             width: 100%;
             display: block;
         }
-        
+
         .cta-container {
             max-width: 900px;
             margin: 0 auto;
@@ -568,46 +636,31 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .cta-title {
             font-size: 36px;
             color: var(--mambu-secondary);
             margin-bottom: 20px;
         }
-        
+
         .cta-text {
             color: var(--mambu-gray);
             font-size: 18px;
             max-width: 700px;
             margin: 0 auto 40px;
         }
-        
+
         .cta-buttons {
             display: flex;
             justify-content: center;
             gap: 20px;
+            flex-wrap: wrap; /* Allow wrap */
         }
-        
-        .cta-shape-1 {
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, rgba(0, 176, 144, 0.1) 0%, rgba(0, 176, 144, 0) 70%);
-            border-radius: 50%;
+
+        .cta-shape-1, .cta-shape-2 {
+             display: none; /* Hiding decorative shapes for now */
         }
-        
-        .cta-shape-2 {
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, rgba(0, 176, 144, 0.05) 0%, rgba(0, 176, 144, 0) 70%);
-            border-radius: 50%;
-        }
-        
+
         /* Contact Section */
         .contact {
             padding: 80px 0;
@@ -615,13 +668,13 @@
             width: 100%;
             display: block;
         }
-        
+
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-        
+
         .contact-item {
             display: flex;
             align-items: center;
@@ -632,12 +685,12 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
-        
+
         .contact-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .contact-icon {
             width: 50px;
             height: 50px;
@@ -646,30 +699,32 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
-        
+
         .contact-icon i {
             font-size: 20px;
             color: var(--mambu-primary);
         }
-        
+
         .contact-info h3 {
             font-size: 18px;
             color: var(--mambu-secondary);
             margin-bottom: 5px;
         }
-        
+
         .contact-info a {
             color: var(--mambu-primary);
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
+            word-break: break-all; /* Prevent long links breaking layout */
         }
-        
+
         .contact-info a:hover {
             color: #008F75;
         }
-        
+
         /* Footer */
         .footer {
             padding: 30px 0;
@@ -677,280 +732,309 @@
             color: white;
             text-align: center;
             width: 100%;
-            display: block;
+            display: block; /* Use block */
+            margin-top: 0; /* Ensure no extra margin */
         }
-        
+
         .footer-text {
             opacity: 0.8;
             font-size: 14px;
         }
-        
+
         /* Responsive Styles */
         @media (max-width: 992px) {
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 40px; /* Reduce gap */
             }
-            
+
             .hero-image {
-                order: -1;
+                order: -1; /* Image first on mobile */
                 max-width: 400px;
                 margin: 0 auto 40px;
             }
-            
+             .hero-badge {
+                 right: 50%;
+                 transform: translateX(50%);
+                 bottom: -25px;
+             }
+
             .stats {
                 justify-content: center;
+                gap: 20px;
             }
-            
+             .stat-item { min-width: 80px; } /* Adjust min width */
+
             .hero-cta {
                 justify-content: center;
             }
-            
+
             .section-title {
                 font-size: 32px;
             }
-            
+
             .quote-text {
                 font-size: 20px;
                 padding: 0 30px;
             }
+             .quote-text:before, .quote-text:after { font-size: 60px;}
+             .quote-text:before { top: 15px; }
+             .quote-text:after { bottom: -5px; }
         }
-        
+
         @media (max-width: 768px) {
             .header {
                 padding: 15px 0;
             }
-            
+
             .mobile-toggle {
                 display: block;
+                z-index: 1001; /* Above nav links */
+                order: 3; /* Ensure it's last in flex order */
             }
-            
+             .nav-container .download-btn { display: none; } /* Hide button in nav container */
+
+
             .nav-links {
                 position: fixed;
                 top: 0;
-                left: -100%;
+                left: -100%; /* Start off-screen */
                 width: 80%;
                 max-width: 300px;
                 height: 100vh;
                 background-color: white;
                 flex-direction: column;
                 align-items: flex-start;
-                padding: 100px 20px 20px;
-                transition: var(--transition);
+                padding: 80px 20px 20px; /* Add padding */
+                transition: left 0.3s ease-in-out; /* Smooth transition */
                 box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-                z-index: 999;
+                z-index: 1000; /* Below header but above content */
             }
-            
+
             .nav-links.active {
-                left: 0;
+                left: 0; /* Slide in */
             }
-            
+
             .nav-link {
                 margin: 0 0 15px 0;
                 font-size: 18px;
                 width: 100%;
                 padding: 10px 0;
+                 color: var(--mambu-secondary); /* Ensure color reset */
             }
-            
-            .download-btn {
-                margin: 0;
-                width: 100%;
-                text-align: center;
+             .nav-link:hover, .nav-link:hover:after {
+                 color: var(--mambu-primary);
+                 width: auto; /* Reset width for mobile */
+                 background: none;
+             }
+             .nav-link:after { display: none; } /* Hide underline on mobile */
+
+
+            /* Mobile Download Button inside menu */
+            .nav-links .download-btn {
+                 display: block; /* Show button in mobile menu */
+                 margin: 20px 0 0 0; /* Space above button */
+                 width: 100%;
+                 text-align: center;
             }
-            
+
+
             .close-menu {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                background: none;
-                border: none;
-                font-size: 24px;
-                color: var(--mambu-secondary);
-                cursor: pointer;
+                 display: block; /* Show close button */
+                 position: absolute;
+                 top: 20px;
+                 right: 20px;
+                 background: none;
+                 border: none;
+                 font-size: 24px;
+                 color: var(--mambu-secondary);
+                 cursor: pointer;
+                 z-index: 1001; /* Ensure clickable */
             }
-            
+
             .hero {
                 padding: 120px 0 80px;
+                min-height: auto; /* Allow height to adjust */
             }
-            
+
             .hero-content h1 {
                 font-size: 36px;
             }
-            
+
             .hero-subtitle {
                 font-size: 18px;
             }
-            
+
             .stat-value {
                 font-size: 30px;
             }
-            
+
+            /* Timeline Adjustments for Mobile */
             .timeline:before {
-                left: 20px;
+                left: 20px; /* Move line to the left */
+                transform: translateX(0);
             }
-            
-            .timeline-content {
-                width: calc(100% - 60px);
-                left: 60px !important;
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                width: calc(100% - 60px); /* Make content wider */
+                left: 60px !important; /* Position content to the right of the line */
+                text-align: left; /* Always left align text */
             }
-            
-            .timeline-content:before {
-                left: -10px !important;
+
+            .timeline-item:nth-child(odd) .timeline-content:before,
+            .timeline-item:nth-child(even) .timeline-content:before {
+                left: -10px !important; /* Position arrow correctly */
+                right: auto;
+                box-shadow: -1px 1px 1px rgba(0,0,0,0.05); /* Consistent shadow */
             }
-            
+
             .timeline-dot {
-                left: 20px;
+                left: 20px; /* Align dot with the line */
+                 transform: translate(-50%, -50%); /* Re-center vertically */
             }
-            
-            .timeline-date {
-                position: relative;
+
+            .timeline-item:nth-child(odd) .timeline-date,
+            .timeline-item:nth-child(even) .timeline-date {
+                position: relative; /* Make date relative to content */
                 top: auto;
                 left: auto !important;
                 right: auto !important;
                 margin-bottom: 10px;
-                display: block;
+                display: block; /* Make it block level */
+                text-align: left; /* Align text left */
+                 background: none; padding: 0; /* Remove background/padding */
             }
-            
+
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .cta-buttons .primary-btn,
             .cta-buttons .secondary-btn {
                 width: 100%;
+                max-width: 300px; /* Limit button width */
                 text-align: center;
             }
         }
-        
+
         @media (max-width: 480px) {
+             body { font-size: 15px; }
+
             .hero-content h1 {
                 font-size: 28px;
             }
-            
+
             .hero-subtitle {
                 font-size: 16px;
             }
-            
+
             .stats {
                 flex-direction: column;
                 gap: 20px;
+                align-items: center; /* Center stats vertically */
+                 text-align: center;
             }
-            
+
             .section-title {
                 font-size: 28px;
             }
-            
+             .section-subtitle { font-size: 16px;}
+
             .quote-text {
                 font-size: 18px;
                 padding: 0 20px;
             }
-            
+            .quote-text:before, .quote-text:after { font-size: 40px;}
+            .quote-text:before { top: 10px;}
+            .quote-text:after { bottom: 0;}
+
+
             .contact-item {
                 flex-direction: column;
                 text-align: center;
             }
+             .cards-grid { grid-template-columns: 1fr; } /* Stack cards */
         }
-        
+
         /* Animation Classes */
-        .fade-in {
+        .fade-in, .slide-in-left, .slide-in-right {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        
-        .fade-in.active {
+        .fade-in { transform: translateY(20px); }
+        .slide-in-left { transform: translateX(-50px); }
+        .slide-in-right { transform: translateX(50px); }
+
+        .fade-in.active, .slide-in-left.active, .slide-in-right.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: translate(0, 0); /* Reset transforms */
         }
-        
-        .delay-1 {
-            transition-delay: 0.1s;
-        }
-        
-        .delay-2 {
-            transition-delay: 0.2s;
-        }
-        
-        .delay-3 {
-            transition-delay: 0.3s;
-        }
-        
-        .delay-4 {
-            transition-delay: 0.4s;
-        }
-        
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .slide-in-left.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .slide-in-right.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
+
+
+        .delay-1 { transition-delay: 0.1s !important; } /* Use !important if needed */
+        .delay-2 { transition-delay: 0.2s !important; }
+        .delay-3 { transition-delay: 0.3s !important; }
+        .delay-4 { transition-delay: 0.4s !important; }
+
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header" id="header">
         <div class="container nav-container">
-            <div class="logo">Eric <span>Oberndorfer</span></div>
-            <button class="mobile-toggle" id="mobileToggle">
+            <a href="#" class="logo">Eric <span>Oberndorfer</span></a>
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
                 <i class="fas fa-bars"></i>
             </button>
+            <!-- Navigation Links -->
             <div class="nav-links" id="navLinks">
-                <button class="close-menu" id="closeMenu">
+                <!-- Close Button for Mobile Menu -->
+                <button class="close-menu" id="closeMenu" aria-label="Close menu">
                     <i class="fas fa-times"></i>
                 </button>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#alignment" class="nav-link">Alignment</a>
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#contact" class="nav-link">Contact</a>
-                <a href="Eric_Oberndorfer_Resume_2025.pdf" class="download-btn" download>
+                <!-- Download Button (also shown in mobile menu) -->
+                <a href="eric_oberndorfer_resume.pdf" class="download-btn" download>
                     Download Resume
                 </a>
             </div>
         </div>
     </header>
-    
+
     <!-- Hero Section -->
     <section class="hero" id="about">
-        <div class="hero-shape-1"></div>
-        <div class="hero-shape-2"></div>
+        <!-- Decorative shapes removed for simplicity, can be added back if desired -->
+        <!-- <div class="hero-shape-1"></div> -->
+        <!-- <div class="hero-shape-2"></div> -->
         <div class="container hero-container">
             <div class="hero-content fade-in">
                 <h1>Building <span>Strategic Partnerships</span> for Mambu's Success</h1>
                 <p class="hero-subtitle">Results-driven relationship builder with 10+ years of experience delivering exceptional customer outcomes and driving long-term growth.</p>
-                
+
                 <div class="stats">
-                    <div class="stat-item">
+                    <div class="stat-item fade-in delay-1">
                         <div class="stat-value">10+</div>
                         <div class="stat-label">Years Experience</div>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item fade-in delay-2">
                         <div class="stat-value">14</div>
                         <div class="stat-label">States Managed</div>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item fade-in delay-3">
                         <div class="stat-value">6mo</div>
                         <div class="stat-label">To Exceed Annual Goals</div>
                     </div>
                 </div>
-                
-                <div class="hero-cta">
+
+                <div class="hero-cta fade-in delay-4">
                     <a href="#alignment" class="primary-btn">How We Align</a>
                     <a href="mailto:E.Obern@gmail.com" class="secondary-btn">
                         <i class="fas fa-envelope"></i>
@@ -958,17 +1042,18 @@
                     </a>
                 </div>
             </div>
-            
+
             <div class="hero-image slide-in-right">
-                <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Eric Oberndorfer" class="profile-img">
-                <div class="hero-badge">
+                 <!-- !!! IMPORTANT: Make sure 'eric-headshot.jpg' is the correct filename and path !!! -->
+                 <img src="eric-headshot.jpg" alt="Eric Oberndorfer Professional Headshot" class="profile-img">
+                 <div class="hero-badge">
                     <i class="fas fa-user-check"></i>
                     <span>Ready to Drive Success</span>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Quote Section -->
     <section class="quote-section">
         <div class="container quote-container fade-in">
@@ -978,7 +1063,7 @@
             <div class="quote-author">– Semhal Tarekegn OGorman, Chief Customer Success Officer at Mambu</div>
         </div>
     </section>
-    
+
     <!-- Alignment Section -->
     <section class="alignment" id="alignment">
         <div class="container">
@@ -986,7 +1071,7 @@
                 <h2 class="section-title">Where My Experience Meets Mambu's Vision</h2>
                 <p class="section-subtitle">My proven skills and experience align perfectly with Mambu's mission to make banking better for a billion people through the power of cloud technology.</p>
             </div>
-            
+
             <div class="cards-grid">
                 <div class="card fade-in delay-1">
                     <div class="card-icon">
@@ -995,7 +1080,7 @@
                     <h3 class="card-title">Strategic Customer Relationships</h3>
                     <p class="card-text">Over a decade of proven expertise building and nurturing high-value partnerships at all organizational levels. Successfully revitalized key accounts and significantly improved client retention through strategic engagement and personalized service.</p>
                 </div>
-                
+
                 <div class="card fade-in delay-2">
                     <div class="card-icon">
                         <i class="fas fa-chart-line"></i>
@@ -1003,3 +1088,261 @@
                     <h3 class="card-title">Consistent Performance Excellence</h3>
                     <p class="card-text">Documented track record of exceeding targets across multiple industries and roles. Consistently recognized for outstanding performance, including exceeding 12-month sales goals in just six months and achieving the highest department satisfaction ratings.</p>
                 </div>
+
+                <div class="card fade-in delay-3">
+                    <div class="card-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3 class="card-title">Team Leadership & Collaboration</h3>
+                     <p class="card-text">Adept at developing and leading high-performing teams, including managing geographically dispersed groups. Fosters team cohesion, mentors professionals, and facilitates cross-functional collaboration to achieve shared objectives.</p>
+                </div>
+
+                 <div class="card fade-in delay-4">
+                    <div class="card-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="card-title">Tech Savvy & Adaptable</h3>
+                     <p class="card-text">Experience implementing innovative technologies (telemetry, eye-tracking, CRMs like Salesforce) to enhance effectiveness. Proven ability to quickly adapt to new environments, industries, and challenging business conditions (COVID, recession).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+             <div class="section-header fade-in">
+                <h2 class="section-title">Career Journey Highlights</h2>
+                <p class="section-subtitle">Key roles demonstrating progressive responsibility in client relations, business development, and leadership.</p>
+            </div>
+
+            <div class="timeline">
+                <!-- Timeline Item 1 -->
+                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">03/2024 – Present</div>
+                    <div class="timeline-content slide-in-left">
+                        <h3 class="timeline-title">Wrangler, Student Services</h3>
+                        <div class="timeline-company">California Superbike School</div>
+                        <div class="timeline-text">
+                             <ul>
+                                <li>Enhanced Customer Experience achieving highest dept satisfaction.</li>
+                                <li>Managed critical daily logistics ensuring seamless operations.</li>
+                                <li>Implemented innovative tech (cameras, telemetry) boosting effectiveness.</li>
+                                <li>Contributed strategically to Military Training safety & skills.</li>
+                             </ul>
+                         </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">09/2021 – 12/2023</div>
+                     <div class="timeline-content slide-in-right">
+                        <h3 class="timeline-title">Director, Business Development, Team Lead</h3>
+                         <div class="timeline-company">Planet Technology</div>
+                         <div class="timeline-text">
+                             <ul>
+                                <li>Increased Client Lifetime Value across 14 states via retention strategies.</li>
+                                <li>Built & Led high-performing remote sales teams.</li>
+                                <li>Established strategic MSP relationships driving growth (as BDM prior).</li>
+                                <li>Developed & delivered impactful company-wide training modules.</li>
+                                <li>Partnered cross-functionally to establish new San Diego office.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Timeline Item 3 -->
+                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">09/2019 – 01/2021</div>
+                    <div class="timeline-content slide-in-left">
+                        <h3 class="timeline-title">Client Relations Manager</h3>
+                        <div class="timeline-company">KForce</div>
+                        <div class="timeline-text">
+                            <ul>
+                                <li>Managed complex end-to-end relationships for enterprise tech clients.</li>
+                                <li>Maintained consistent client growth & retention during COVID-19.</li>
+                            </ul>
+                         </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">07/2016 – 10/2018</div>
+                    <div class="timeline-content slide-in-right">
+                        <h3 class="timeline-title">Account Executive</h3>
+                        <div class="timeline-company">Cox Business</div>
+                        <div class="timeline-text">
+                            <ul>
+                                <li>Managed SMB/Enterprise telecom accounts, spearheading major network expansion projects.</li>
+                                <li>Enhanced internal comms by creating/hosting internal leadership podcast.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Timeline Item 5 -->
+                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">10/2012 – 03/2016</div>
+                    <div class="timeline-content slide-in-left">
+                        <h3 class="timeline-title">Retail Sales Consultant</h3>
+                        <div class="timeline-company">AT&T</div>
+                        <div class="timeline-text">
+                            <ul>
+                                <li>Delivered exceptional customer service & sales at flagship store.</li>
+                                <li>Piloted innovative sales tech in elite "Store of the Future" initiative.</li>
+                             </ul>
+                         </div>
+                    </div>
+                 </div>
+
+             </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+         <div class="container cta-container fade-in">
+            <h2 class="cta-title">Ready to Elevate Customer Success at Mambu?</h2>
+            <p class="cta-text">I'm confident my skills and dedication align perfectly with Mambu's customer-centric values. Let's discuss how I can contribute to your team and drive success for your clients.</p>
+            <div class="cta-buttons">
+                <a href="mailto:E.Obern@gmail.com" class="primary-btn">
+                     <i class="fas fa-envelope"></i> Email Me
+                </a>
+                <a href="eric_oberndorfer_resume.pdf" download class="secondary-btn">
+                     <i class="fas fa-download"></i> Download Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+         <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Reach out via email, phone, or connect on LinkedIn.</p>
+             </div>
+            <div class="contact-container">
+                <div class="contact-item fade-in delay-1">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-info">
+                        <h3>Email</h3>
+                        <a href="mailto:E.Obern@gmail.com">E.Obern@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item fade-in delay-2">
+                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                     <div class="contact-info">
+                        <h3>Phone</h3>
+                        <a href="tel:619-733-5323">619-733-5323</a>
+                    </div>
+                </div>
+                <div class="contact-item fade-in delay-3">
+                     <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+                    <div class="contact-info">
+                         <h3>LinkedIn</h3>
+                         <a href="https://linkedin.com/in/ericoberndorfer" target="_blank" rel="noopener noreferrer">linkedin.com/in/ericoberndorfer</a>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2024 Eric Oberndorfer | Tailored for Mambu Customer Success</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // --- Scroll Animations ---
+        const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+
+        const observerOptions = {
+            root: null, // relative to document viewport
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: Stop observing the element once it's animated
+                    // observer.unobserve(entry.target);
+                }
+                // Optional: If you want elements to fade out when scrolled out of view
+                // else {
+                //     entry.target.classList.remove('active');
+                // }
+            });
+        };
+
+        const animationObserver = new IntersectionObserver(observerCallback, observerOptions);
+
+        animatedElements.forEach(el => {
+            animationObserver.observe(el);
+        });
+
+        // --- Sticky Header Logic ---
+        const header = document.getElementById('header');
+        const scrollThreshold = 50; // Pixels to scroll before header changes
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > scrollThreshold) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- Mobile Menu Logic ---
+        const mobileToggle = document.getElementById('mobileToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const navLinks = document.getElementById('navLinks');
+        const navLinkItems = document.querySelectorAll('.nav-link'); // Get all nav links
+
+        if (mobileToggle && navLinks && closeMenu) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.add('active');
+            });
+
+            closeMenu.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+
+            // Close menu when a nav link is clicked
+            navLinkItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    // Only remove active class if the menu is actually open (on mobile)
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+
+            // Optional: Close menu if clicking outside of it
+            document.addEventListener('click', (event) => {
+                const isClickInsideNav = navLinks.contains(event.target);
+                const isClickOnToggle = mobileToggle.contains(event.target);
+
+                if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        }
+
+        console.log("Site interactivity loaded."); // Confirmation
+
+    </script>
+</body>
+</html>
