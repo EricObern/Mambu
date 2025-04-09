@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- ** Font Awesome Kit Script - Double Check This URL ** -->
     <script src="https://kit.fontawesome.com/3010d94d2f.js" crossorigin="anonymous"></script>
     <style>
         :root {
@@ -74,7 +75,7 @@
         .hero-content h1 span { color: var(--mambu-primary-green); }
         .hero-subtitle { font-size: 19px; color: var(--mambu-text-medium); margin-bottom: 30px; max-width: 540px; }
         .hero-value-prop { font-size: 18px; color: var(--mambu-text-medium); margin-top: -10px; margin-bottom: 45px; max-width: 540px; }
-        .hero-cta { display: none; } /* Removed redundant button container */
+        .hero-cta { display: none; }
 
         /* --- Quote Section --- */
         .quote-section { padding: 90px 0; background-color: var(--mambu-background-alt); position: relative; width: 100%; display: block; }
@@ -99,7 +100,7 @@
         }
         .card:hover { transform: translateY(-6px); border-color: var(--mambu-primary-green); box-shadow: var(--shadow-light); }
         .card-icon { width: 50px; height: 50px; background-color: rgba(58, 183, 104, 0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; flex-shrink: 0; }
-        .card-icon i { font-size: 20px; color: var(--mambu-primary-green); } /* Icon style */
+        .card-icon i { font-size: 20px; color: var(--mambu-primary-green); } /* Icon Style */
         .card-title { font-size: 21px; margin-bottom: 15px; color: var(--mambu-text-dark); font-weight: 600; }
         .card-text { color: var(--mambu-text-medium); font-size: 16px; flex-grow: 1; }
 
@@ -129,24 +130,26 @@
             grid-template-columns: 1fr; /* Default mobile */
             gap: 30px;
             margin-top: 70px;
-            max-width: 900px; /* Limit width for better balance */
+            max-width: 1000px; /* Adjusted max-width */
              margin-left: auto; margin-right: auto;
         }
-        @media (min-width: 768px) { /* Medium screens */
+        /* Force 3 columns on medium screens and up */
+        @media (min-width: 768px) {
              .contact-container { grid-template-columns: repeat(3, 1fr); }
         }
 
-        .contact-item { display: flex; align-items: center; gap: 15px; padding: 30px; background-color: white; border-radius: var(--border-radius-main); border: 1px solid var(--mambu-border-light); box-shadow: none; transition: var(--transition); }
+        .contact-item { display: flex; align-items: center; gap: 15px; /* Reduced gap */ padding: 25px; /* Reduced padding */ background-color: white; border-radius: var(--border-radius-main); border: 1px solid var(--mambu-border-light); box-shadow: none; transition: var(--transition); }
         .contact-item:hover { border-color: var(--mambu-primary-green); box-shadow: var(--shadow-light); transform: translateY(-6px); }
-        .contact-icon { width: 40px; height: 40px; /* Slightly smaller icon box */ background-color: rgba(58, 183, 104, 0.08); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .contact-icon i { font-size: 18px; color: var(--mambu-primary-green); } /* Icon style */
-        .contact-info { display: flex; flex-direction: column; }
+        .contact-icon { width: 40px; height: 40px; background-color: rgba(58, 183, 104, 0.08); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .contact-icon i { font-size: 18px; color: var(--mambu-primary-green); } /* Icon Style */
+        .contact-info { display: flex; flex-direction: column; overflow: hidden; /* Prevent content spill */ }
         .contact-info h3 { font-size: 17px; color: var(--mambu-text-dark); margin-bottom: 5px; font-weight: 600; }
         .contact-info a, .contact-info p {
             color: var(--mambu-text-medium); text-decoration: none; font-weight: 500;
             font-size: 15px; transition: var(--transition);
-            word-break: break-word; /* Allow wrapping, but container width helps */
+            word-wrap: break-word; /* More robust wrapping */
             overflow-wrap: break-word;
+            word-break: break-word; /* Ensure breaks happen */
             margin: 0; line-height: 1.4;
         }
         .contact-info a { color: var(--mambu-primary-green); }
@@ -163,7 +166,6 @@
             .hero-subtitle, .hero-value-prop { margin-left: auto; margin-right: auto; }
             .section-title { font-size: 32px; }
             .quote-text { font-size: 22px; padding: 0 30px; }
-             /* Contact items stack on smaller tablets too */
             .contact-container { grid-template-columns: 1fr; max-width: 500px; }
         }
         @media (max-width: 768px) {
@@ -210,7 +212,6 @@
                 <a href="#alignment" class="nav-link">Alignment</a>
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#contact" class="nav-link">Contact</a>
-                <!-- Corrected Resume Link -->
                 <a href="Eric_Oberndorfer_Resume_2025.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
                     <i class="fas fa-file-pdf"></i> View Resume
                 </a>
@@ -225,7 +226,7 @@
                 <h1>Driving <span>Customer Value</span> & Growth with Mambu</h1>
                 <p class="hero-subtitle">Strategic relationship builder focused on empowering clients and fostering long-term success through partnership and expertise.</p>
                 <p class="hero-value-prop">Leveraging 15+ years of experience to ensure Mambu clients achieve maximum value and scale effectively.</p>
-                <!-- Removed redundant CTA button -->
+                <!-- Removed redundant hero CTA button -->
             </div>
             <div class="hero-image slide-in-right">
                  <img src="eric-headshot.jpg" alt="Eric Oberndorfer Professional Headshot" class="profile-img">
@@ -243,7 +244,7 @@
         </div>
     </section>
 
-    <!-- Alignment Section - Using Mambu Values/Approach -->
+    <!-- Alignment Section -->
     <section class="alignment" id="alignment">
         <div class="container">
             <div class="section-header fade-in">
@@ -252,22 +253,22 @@
             </div>
             <div class="cards-grid">
                 <div class="card fade-in delay-1">
-                    <div class="card-icon"><i class="fas fa-heart"></i></div> {/* Icon added */}
+                    <div class="card-icon"><i class="fas fa-heart"></i></div> {/* Icon Added */}
                     <h3 class="card-title">Customer Obsession & Partnership</h3>
                     <p class="card-text">Dedicated to delivering exceptional experiences (evidenced by highest dept. satisfaction ratings) and building high-trust, long-term partnerships by actively listening and advocating for client needs across diverse segments (SMB to enterprise).</p>
                 </div>
                 <div class="card fade-in delay-2">
-                    <div class="card-icon"><i class="fas fa-rocket"></i></div> {/* Icon added */}
+                    <div class="card-icon"><i class="fas fa-rocket"></i></div> {/* Icon Added */}
                     <h3 class="card-title">Delivering Strategic Value & Growth</h3>
                     <p class="card-text">Track record of exceeding performance targets, directly contributing to client retention and growth across 14 states. Skilled in identifying opportunities and implementing strategies that lead to measurable client value realization.</p>
                 </div>
                 <div class="card fade-in delay-3">
-                    <div class="card-icon"><i class="fas fa-sync-alt"></i></div> {/* Icon added */}
+                    <div class="card-icon"><i class="fas fa-sync-alt"></i></div> {/* Icon Added */}
                     <h3 class="card-title">Enabling Scalability & Adaptability</h3>
                      <p class="card-text">Experience managing complex client relationships and large-scale initiatives (network expansions, office setups). Proven ability to navigate challenging conditions (COVID) and implement new technologies, supporting client scalability.</p>
                 </div>
                  <div class="card fade-in delay-4">
-                    <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div> {/* Icon added */}
+                    <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div> {/* Icon Added */}
                     <h3 class="card-title">Proactive Expertise & Enablement</h3>
                      <p class="card-text">Recognized top trainer skilled in developing and delivering impactful programs that drive user adoption. Proactively implement technology and processes, ensuring clients are fully enabled for success on the platform.</p>
                 </div>
@@ -361,32 +362,32 @@
     <section class="contact" id="contact">
          <div class="container">
             <div class="section-header fade-in">
-                <h2 class="section-title">Connect with Me</h2>
-                <p class="section-subtitle">Ready to discuss how I can contribute to Mambu's success. Reach out via your preferred method.</p>
+                <h2 class="section-title">Contact Information</h2> <!-- Updated Header -->
+                <p class="section-subtitle">Let's connect. Reach out via email, phone, or LinkedIn.</p> <!-- Updated Subtitle -->
              </div>
             <div class="contact-container">
                 <div class="contact-item fade-in delay-1">
-                    <div class="contact-icon"><i class="fas fa-envelope"></i></div> {/* Icon added */}
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div> {/* Icon Added */}
                     <div class="contact-info">
                         <h3>Email</h3>
                         <a href="mailto:E.Obern@gmail.com">E.Obern@gmail.com</a>
                     </div>
                 </div>
                 <div class="contact-item fade-in delay-2">
-                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div> {/* Icon added */}
+                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div> {/* Icon Added */}
                      <div class="contact-info">
                         <h3>Phone</h3>
                         <a href="tel:619-733-5323">619-733-5323</a>
                     </div>
                 </div>
                 <div class="contact-item fade-in delay-3">
-                     <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div> {/* Icon added */}
+                     <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div> {/* Icon Added */}
                     <div class="contact-info">
                          <h3>LinkedIn</h3>
                          <a href="https://linkedin.com/in/ericoberndorfer" target="_blank" rel="noopener noreferrer">linkedin.com/in/ericoberndorfer</a>
                      </div>
                 </div>
-                <!-- Location Card Removed -->
+                 <!-- Location Card Removed -->
             </div>
         </div>
     </section>
