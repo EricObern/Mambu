@@ -34,7 +34,7 @@
         }
         .container { max-width: 1140px; margin: 0 auto; padding: 0 15px; width: 100%; }
 
-        /* --- Header --- */
+        /* --- Header Styles --- */
         .header {
             position: fixed; top: 0; left: 0; right: 0; padding: 15px 0;
             background-color: rgba(255, 255, 255, 0.97); backdrop-filter: blur(8px);
@@ -74,8 +74,7 @@
         .hero-content h1 span { color: var(--mambu-primary-green); }
         .hero-subtitle { font-size: 19px; color: var(--mambu-text-medium); margin-bottom: 30px; max-width: 540px; }
         .hero-value-prop { font-size: 18px; color: var(--mambu-text-medium); margin-top: -10px; margin-bottom: 45px; max-width: 540px; }
-        /* CTA section removed from Hero */
-        .hero-cta { display: none; }
+        .hero-cta { display: none; } /* Removed redundant button container */
 
         /* --- Quote Section --- */
         .quote-section { padding: 90px 0; background-color: var(--mambu-background-alt); position: relative; width: 100%; display: block; }
@@ -100,7 +99,7 @@
         }
         .card:hover { transform: translateY(-6px); border-color: var(--mambu-primary-green); box-shadow: var(--shadow-light); }
         .card-icon { width: 50px; height: 50px; background-color: rgba(58, 183, 104, 0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; flex-shrink: 0; }
-        .card-icon i { font-size: 20px; color: var(--mambu-primary-green); } /* Ensure icon is visible */
+        .card-icon i { font-size: 20px; color: var(--mambu-primary-green); } /* Icon style */
         .card-title { font-size: 21px; margin-bottom: 15px; color: var(--mambu-text-dark); font-weight: 600; }
         .card-text { color: var(--mambu-text-medium); font-size: 16px; flex-grow: 1; }
 
@@ -124,20 +123,31 @@
 
         /* --- Contact Section --- */
         .contact { padding: 120px 0; background-color: var(--mambu-background-light); width: 100%; display: block; }
-        .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 70px; }
-        .contact-item { display: flex; align-items: center; gap: 18px; padding: 30px; background-color: white; border-radius: var(--border-radius-main); border: 1px solid var(--mambu-border-light); box-shadow: none; transition: var(--transition); }
+        /* Explicit 3-column grid for desktop */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr; /* Default mobile */
+            gap: 30px;
+            margin-top: 70px;
+            max-width: 900px; /* Limit width for better balance */
+             margin-left: auto; margin-right: auto;
+        }
+        @media (min-width: 768px) { /* Medium screens */
+             .contact-container { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .contact-item { display: flex; align-items: center; gap: 15px; padding: 30px; background-color: white; border-radius: var(--border-radius-main); border: 1px solid var(--mambu-border-light); box-shadow: none; transition: var(--transition); }
         .contact-item:hover { border-color: var(--mambu-primary-green); box-shadow: var(--shadow-light); transform: translateY(-6px); }
-        .contact-icon { width: 45px; height: 45px; background-color: rgba(58, 183, 104, 0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .contact-icon i { font-size: 18px; color: var(--mambu-primary-green); } /* Ensure icon visible */
-        .contact-info { display: flex; flex-direction: column; } /* Stack title and link */
-        .contact-info h3 { font-size: 18px; color: var(--mambu-text-dark); margin-bottom: 5px; font-weight: 600; }
+        .contact-icon { width: 40px; height: 40px; /* Slightly smaller icon box */ background-color: rgba(58, 183, 104, 0.08); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .contact-icon i { font-size: 18px; color: var(--mambu-primary-green); } /* Icon style */
+        .contact-info { display: flex; flex-direction: column; }
+        .contact-info h3 { font-size: 17px; color: var(--mambu-text-dark); margin-bottom: 5px; font-weight: 600; }
         .contact-info a, .contact-info p {
             color: var(--mambu-text-medium); text-decoration: none; font-weight: 500;
-            font-size: 15px; /* Reduced font size for links */
-            transition: var(--transition);
-            word-break: break-all; /* Use break-all for better wrapping */
+            font-size: 15px; transition: var(--transition);
+            word-break: break-word; /* Allow wrapping, but container width helps */
             overflow-wrap: break-word;
-            margin: 0; line-height: 1.4; /* Adjust line height */
+            margin: 0; line-height: 1.4;
         }
         .contact-info a { color: var(--mambu-primary-green); }
         .contact-info a:hover { color: var(--mambu-dark-green); }
@@ -151,10 +161,10 @@
             .hero-container { grid-template-columns: 1fr; text-align: center; gap: 50px; }
             .hero-image { order: -1; max-width: 380px; margin: 0 auto 40px; }
             .hero-subtitle, .hero-value-prop { margin-left: auto; margin-right: auto; }
-            .hero-cta { justify-content: center; }
             .section-title { font-size: 32px; }
             .quote-text { font-size: 22px; padding: 0 30px; }
-            .contact-container { grid-template-columns: 1fr; }
+             /* Contact items stack on smaller tablets too */
+            .contact-container { grid-template-columns: 1fr; max-width: 500px; }
         }
         @media (max-width: 768px) {
             .header { padding: 12px 0; }
@@ -242,22 +252,22 @@
             </div>
             <div class="cards-grid">
                 <div class="card fade-in delay-1">
-                    <div class="card-icon"><i class="fas fa-heart"></i></div>
+                    <div class="card-icon"><i class="fas fa-heart"></i></div> {/* Icon added */}
                     <h3 class="card-title">Customer Obsession & Partnership</h3>
                     <p class="card-text">Dedicated to delivering exceptional experiences (evidenced by highest dept. satisfaction ratings) and building high-trust, long-term partnerships by actively listening and advocating for client needs across diverse segments (SMB to enterprise).</p>
                 </div>
                 <div class="card fade-in delay-2">
-                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="card-icon"><i class="fas fa-rocket"></i></div> {/* Icon added */}
                     <h3 class="card-title">Delivering Strategic Value & Growth</h3>
                     <p class="card-text">Track record of exceeding performance targets, directly contributing to client retention and growth across 14 states. Skilled in identifying opportunities and implementing strategies that lead to measurable client value realization.</p>
                 </div>
                 <div class="card fade-in delay-3">
-                    <div class="card-icon"><i class="fas fa-sync-alt"></i></div>
+                    <div class="card-icon"><i class="fas fa-sync-alt"></i></div> {/* Icon added */}
                     <h3 class="card-title">Enabling Scalability & Adaptability</h3>
                      <p class="card-text">Experience managing complex client relationships and large-scale initiatives (network expansions, office setups). Proven ability to navigate challenging conditions (COVID) and implement new technologies, supporting client scalability.</p>
                 </div>
                  <div class="card fade-in delay-4">
-                    <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div> {/* Icon added */}
                     <h3 class="card-title">Proactive Expertise & Enablement</h3>
                      <p class="card-text">Recognized top trainer skilled in developing and delivering impactful programs that drive user adoption. Proactively implement technology and processes, ensuring clients are fully enabled for success on the platform.</p>
                 </div>
@@ -356,33 +366,27 @@
              </div>
             <div class="contact-container">
                 <div class="contact-item fade-in delay-1">
-                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div> {/* Icon added */}
                     <div class="contact-info">
                         <h3>Email</h3>
                         <a href="mailto:E.Obern@gmail.com">E.Obern@gmail.com</a>
                     </div>
                 </div>
                 <div class="contact-item fade-in delay-2">
-                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div> {/* Icon added */}
                      <div class="contact-info">
                         <h3>Phone</h3>
                         <a href="tel:619-733-5323">619-733-5323</a>
                     </div>
                 </div>
                 <div class="contact-item fade-in delay-3">
-                     <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+                     <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div> {/* Icon added */}
                     <div class="contact-info">
                          <h3>LinkedIn</h3>
                          <a href="https://linkedin.com/in/ericoberndorfer" target="_blank" rel="noopener noreferrer">linkedin.com/in/ericoberndorfer</a>
                      </div>
                 </div>
-                 <div class="contact-item fade-in delay-4">
-                     <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="contact-info">
-                         <h3>Location</h3>
-                         <p>San Diego, CA</p>
-                     </div>
-                </div>
+                <!-- Location Card Removed -->
             </div>
         </div>
     </section>
