@@ -20,7 +20,7 @@
             --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.05);
             --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
-            --border-radius-main: 6px; /* Consistent border radius */
+            --border-radius-main: 6px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,7 +34,7 @@
         }
         .container { max-width: 1140px; margin: 0 auto; padding: 0 15px; width: 100%; }
 
-        /* --- Header Styles --- */
+        /* --- Header --- */
         .header {
             position: fixed; top: 0; left: 0; right: 0; padding: 15px 0;
             background-color: rgba(255, 255, 255, 0.97); backdrop-filter: blur(8px);
@@ -74,14 +74,8 @@
         .hero-content h1 span { color: var(--mambu-primary-green); }
         .hero-subtitle { font-size: 19px; color: var(--mambu-text-medium); margin-bottom: 30px; max-width: 540px; }
         .hero-value-prop { font-size: 18px; color: var(--mambu-text-medium); margin-top: -10px; margin-bottom: 45px; max-width: 540px; }
-        .hero-cta { display: flex; gap: 15px; margin-top: 0; flex-wrap: wrap; }
-        .primary-btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: var(--mambu-primary-green); color: white; padding: 14px 32px;
-            border-radius: var(--border-radius-main); text-decoration: none; font-weight: 600; font-size: 16px;
-            transition: var(--transition); border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(58, 183, 104, 0.2);
-        }
-        .primary-btn:hover { background: var(--mambu-dark-green); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(58, 183, 104, 0.3); }
+        /* CTA section removed from Hero */
+        .hero-cta { display: none; }
 
         /* --- Quote Section --- */
         .quote-section { padding: 90px 0; background-color: var(--mambu-background-alt); position: relative; width: 100%; display: block; }
@@ -106,7 +100,7 @@
         }
         .card:hover { transform: translateY(-6px); border-color: var(--mambu-primary-green); box-shadow: var(--shadow-light); }
         .card-icon { width: 50px; height: 50px; background-color: rgba(58, 183, 104, 0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; flex-shrink: 0; }
-        .card-icon i { font-size: 20px; color: var(--mambu-primary-green); }
+        .card-icon i { font-size: 20px; color: var(--mambu-primary-green); } /* Ensure icon is visible */
         .card-title { font-size: 21px; margin-bottom: 15px; color: var(--mambu-text-dark); font-weight: 600; }
         .card-text { color: var(--mambu-text-medium); font-size: 16px; flex-grow: 1; }
 
@@ -133,10 +127,18 @@
         .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 70px; }
         .contact-item { display: flex; align-items: center; gap: 18px; padding: 30px; background-color: white; border-radius: var(--border-radius-main); border: 1px solid var(--mambu-border-light); box-shadow: none; transition: var(--transition); }
         .contact-item:hover { border-color: var(--mambu-primary-green); box-shadow: var(--shadow-light); transform: translateY(-6px); }
-        .contact-icon { width: 50px; height: 50px; background-color: rgba(58, 183, 104, 0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .contact-icon i { font-size: 20px; color: var(--mambu-primary-green); }
+        .contact-icon { width: 45px; height: 45px; background-color: rgba(58, 183, 104, 0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .contact-icon i { font-size: 18px; color: var(--mambu-primary-green); } /* Ensure icon visible */
+        .contact-info { display: flex; flex-direction: column; } /* Stack title and link */
         .contact-info h3 { font-size: 18px; color: var(--mambu-text-dark); margin-bottom: 5px; font-weight: 600; }
-        .contact-info a, .contact-info p { color: var(--mambu-text-medium); text-decoration: none; font-weight: 500; font-size: 16px; transition: var(--transition); word-break: break-word; overflow-wrap: break-word; margin: 0; line-height: 1.5; }
+        .contact-info a, .contact-info p {
+            color: var(--mambu-text-medium); text-decoration: none; font-weight: 500;
+            font-size: 15px; /* Reduced font size for links */
+            transition: var(--transition);
+            word-break: break-all; /* Use break-all for better wrapping */
+            overflow-wrap: break-word;
+            margin: 0; line-height: 1.4; /* Adjust line height */
+        }
         .contact-info a { color: var(--mambu-primary-green); }
         .contact-info a:hover { color: var(--mambu-dark-green); }
 
@@ -158,12 +160,7 @@
             .header { padding: 12px 0; }
             .mobile-toggle { display: block; z-index: 1001; order: 3; }
             .nav-container .download-btn { display: none; }
-            .nav-links {
-                position: fixed; top: 0; left: -100%; width: 80%; max-width: 300px; height: 100vh;
-                background-color: white; flex-direction: column; align-items: flex-start;
-                padding: 80px 20px 20px; transition: left 0.3s ease-in-out;
-                box-shadow: 0 0 30px rgba(0, 0, 0, 0.1); z-index: 1000;
-            }
+            .nav-links { position: fixed; top: 0; left: -100%; width: 80%; max-width: 300px; height: 100vh; background-color: white; flex-direction: column; align-items: flex-start; padding: 80px 20px 20px; transition: left 0.3s ease-in-out; box-shadow: 0 0 30px rgba(0, 0, 0, 0.1); z-index: 1000; }
             .nav-links.active { left: 0; }
             .nav-link { margin: 0 0 15px 0; font-size: 18px; width: 100%; padding: 10px 0; color: var(--mambu-text-dark); }
             .nav-link:hover { color: var(--mambu-primary-green); }
@@ -176,7 +173,7 @@
         }
         @media (max-width: 480px) {
             body { font-size: 16px; }
-            .hero-content h1 { font-size: 32px; } .hero-subtitle { font-size: 17px; }
+            .hero-content h1 { font-size: 34px; } .hero-subtitle { font-size: 17px; }
             .section-title { font-size: 28px; } .section-subtitle { font-size: 17px; }
             .quote-text { font-size: 20px; padding: 0 15px; }
             .contact-item { flex-direction: column; text-align: center; gap: 15px; padding: 25px; }
@@ -218,13 +215,9 @@
                 <h1>Driving <span>Customer Value</span> & Growth with Mambu</h1>
                 <p class="hero-subtitle">Strategic relationship builder focused on empowering clients and fostering long-term success through partnership and expertise.</p>
                 <p class="hero-value-prop">Leveraging 15+ years of experience to ensure Mambu clients achieve maximum value and scale effectively.</p>
-                <div class="hero-cta fade-in delay-1">
-                    <a href="#alignment" class="primary-btn">View Alignment</a>
-                    <!-- Removed second hero button -->
-                </div>
+                <!-- Removed redundant CTA button -->
             </div>
             <div class="hero-image slide-in-right">
-                 <!-- Correct headshot filename -->
                  <img src="eric-headshot.jpg" alt="Eric Oberndorfer Professional Headshot" class="profile-img">
             </div>
         </div>
@@ -248,25 +241,21 @@
                 <p class="section-subtitle">My experience directly supports the pillars of Mambu's customer success approach: fostering partnerships, delivering strategic value, enabling growth, and ensuring client success through expertise.</p>
             </div>
             <div class="cards-grid">
-                <!-- Card 1: Customer Obsession & Partnership -->
                 <div class="card fade-in delay-1">
                     <div class="card-icon"><i class="fas fa-heart"></i></div>
                     <h3 class="card-title">Customer Obsession & Partnership</h3>
                     <p class="card-text">Dedicated to delivering exceptional experiences (evidenced by highest dept. satisfaction ratings) and building high-trust, long-term partnerships by actively listening and advocating for client needs across diverse segments (SMB to enterprise).</p>
                 </div>
-                <!-- Card 2: Strategic Value & Growth -->
                 <div class="card fade-in delay-2">
                     <div class="card-icon"><i class="fas fa-rocket"></i></div>
                     <h3 class="card-title">Delivering Strategic Value & Growth</h3>
                     <p class="card-text">Track record of exceeding performance targets, directly contributing to client retention and growth across 14 states. Skilled in identifying opportunities and implementing strategies that lead to measurable client value realization.</p>
                 </div>
-                <!-- Card 3: Scalability & Adaptability -->
                 <div class="card fade-in delay-3">
                     <div class="card-icon"><i class="fas fa-sync-alt"></i></div>
                     <h3 class="card-title">Enabling Scalability & Adaptability</h3>
                      <p class="card-text">Experience managing complex client relationships and large-scale initiatives (network expansions, office setups). Proven ability to navigate challenging conditions (COVID) and implement new technologies, supporting client scalability.</p>
                 </div>
-                <!-- Card 4: Expertise & Enablement -->
                  <div class="card fade-in delay-4">
                     <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                     <h3 class="card-title">Proactive Expertise & Enablement</h3>
@@ -284,7 +273,6 @@
                 <p class="section-subtitle">Key roles highlighting relevant experience in client relationship management, technical implementation, strategic growth, and team leadership aligned with the Customer Success Manager role.</p>
             </div>
             <div class="experience-grid">
-                <!-- Experience Card 1: Superbike School -->
                 <div class="experience-card fade-in">
                     <div class="experience-header">
                         <h3 class="experience-title">Wrangler, Student Services</h3>
@@ -300,7 +288,6 @@
                          </ul>
                      </div>
                 </div>
-                <!-- Experience Card 2: Planet Technology -->
                 <div class="experience-card fade-in delay-1">
                      <div class="experience-header">
                         <h3 class="experience-title">Director, Business Development, Team Lead</h3>
@@ -317,7 +304,6 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Experience Card 3: KForce -->
                 <div class="experience-card fade-in delay-2">
                      <div class="experience-header">
                         <h3 class="experience-title">Client Relations Manager</h3>
@@ -331,7 +317,6 @@
                         </ul>
                      </div>
                 </div>
-                <!-- Experience Card 4: Cox Business -->
                 <div class="experience-card fade-in delay-3">
                     <div class="experience-header">
                         <h3 class="experience-title">Account Executive</h3>
@@ -345,7 +330,6 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Experience Card 5: AT&T -->
                  <div class="experience-card fade-in delay-4">
                      <div class="experience-header">
                         <h3 class="experience-title">Retail Sales Consultant</h3>
