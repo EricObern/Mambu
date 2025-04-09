@@ -3,595 +3,785 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eric Oberndorfer | Driving Customer Success at Mambu</title>
+    <title>Eric Oberndorfer | Customer Success Manager for Mambu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- Global Styles & Mambu Aesthetic --- */
         :root {
-            /* Mambu Inspired Colors - Sampled/Approximated */
-            --mambu-green-bright: #00FF84; /* Bright green from gradients */
-            --mambu-green-dark: #00A354;  /* Darker green shade */
-            --mambu-accent-gradient: linear-gradient(90deg, var(--mambu-green-dark), var(--mambu-green-bright));
-            --dark-text: #1a202c; /* Dark grey/blue, not pure black */
-            --medium-text: #4a5568;
-            --light-text: #f7fafc;
-            --background-light: #ffffff;
-            --background-medium: #f8f9fa; /* Very light grey for subtle contrast */
-            --border-color: #e2e8f0;
-            --section-padding: 60px 20px; /* Increased padding */
+            --mambu-primary: #00B090;
+            --mambu-secondary: #333333;
+            --mambu-light: #F8F9FA;
+            --mambu-text: #333333;
+            --mambu-text-light: #666666;
+            --mambu-white: #FFFFFF;
+            --mambu-transition: all 0.3s ease;
+            --mambu-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            --mambu-radius: 8px;
         }
-
+        
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.7; /* Slightly increased line height */
-            color: var(--dark-text);
-            background-color: var(--background-light);
-            -webkit-font-smoothing: antialiased; /* Smoother fonts */
-            -moz-osx-font-smoothing: grayscale;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--mambu-text);
+            line-height: 1.6;
+            background-color: var(--mambu-white);
+            overflow-x: hidden;
         }
-
+        
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
-
-        h1, h2, h3 {
+        
+        h1, h2, h3, h4, h5, h6 {
             font-weight: 600;
-            margin-bottom: 18px; /* Consistent margin */
             line-height: 1.3;
-            color: var(--dark-text); /* Default dark text */
         }
-
-        h1 { font-size: 2.6rem; font-weight: 700;}
-        h2 { font-size: 2.1rem; color: var(--mambu-green-dark); margin-bottom: 25px; } /* Section titles in green */
-        h3 { font-size: 1.3rem; color: var(--dark-text); margin-bottom: 12px; } /* Experience titles */
-
+        
         p {
-            margin-bottom: 18px;
-            color: var(--medium-text); /* Softer text color for paragraphs */
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
-
-        ul {
-            list-style: none;
-        }
-
-        li {
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-            color: var(--medium-text);
-        }
-
-        li::before {
-            content: '✓'; /* Checkmark instead of bullet */
-            color: var(--mambu-green-dark);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1.5em;
-            position: absolute;
-            left: 10px;
-            top: 1px; /* Fine-tune vertical alignment */
-        }
-
+        
         a {
-            color: var(--mambu-green-dark); /* Links use green */
+            color: var(--mambu-primary);
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
+            transition: var(--mambu-transition);
         }
-
+        
         a:hover {
-            color: var(--mambu-green-bright);
+            color: #008f75;
         }
-
+        
         .btn {
             display: inline-block;
-            padding: 12px 30px; /* Slightly more padding */
-            background: var(--mambu-green-dark);
-            color: var(--dark-text); /* Dark text on bright button */
-            border: 2px solid transparent;
-            border-radius: 30px; /* Pill shape */
-            text-decoration: none;
+            background-color: var(--mambu-primary);
+            color: white;
             font-weight: 600;
-            transition: all 0.3s ease;
+            padding: 12px 28px;
+            border-radius: var(--mambu-radius);
+            transition: var(--mambu-transition);
+            text-align: center;
             cursor: pointer;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
+        
         .btn:hover {
-            background: var(--mambu-green-bright);
-            color: var(--dark-text);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            background-color: #008f75;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 176, 144, 0.2);
         }
-
-        .btn-secondary {
-             background: var(--background-light);
-             color: var(--mambu-green-dark);
-             border: 2px solid var(--mambu-green-dark);
-             box-shadow: none;
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--mambu-primary);
+            border: 2px solid var(--mambu-primary);
         }
-
-        .btn-secondary:hover {
-            background-color: var(--mambu-green-dark);
-            color: var(--light-text); /* Light text when background is dark */
-            border-color: var(--mambu-green-dark);
-             transform: translateY(-3px);
-             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        
+        .btn-outline:hover {
+            background-color: var(--mambu-primary);
+            color: white;
         }
-
-
-        section {
-            padding: var(--section-padding);
-            border-bottom: 1px solid var(--border-color); /* Subtle divider */
+        
+        /* Header */
+        header {
+            padding: 24px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--mambu-transition);
         }
-        section:last-of-type {
-            border-bottom: none;
-        }
-
-        section#profile, section#why-mambu, section#skills {
-             background-color: var(--background-medium); /* Alternate background */
-        }
-
-
-        /* --- Header --- */
-        .header {
-            background: var(--dark-text); /* Dark background for contrast */
-            color: var(--light-text);
-            padding: 50px 20px;
-            text-align: center;
-            border-bottom: 5px solid var(--mambu-green-bright); /* Green accent */
-        }
-
+        
         .header-content {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            gap: 15px; /* Reduced gap */
-            max-width: 800px;
-            margin: 0 auto;
         }
-
-        /* -- Ensure headshot path/filename is EXACTLY correct -- */
-        .header img.headshot {
-            width: 160px; /* Slightly larger */
-            height: 160px;
-            border-radius: 50%;
-            border: 5px solid var(--background-light); /* White border */
-            object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Subtle shadow */
-        }
-
-        .header h1 {
-            color: var(--light-text);
-            font-size: 2.8rem;
-            margin-bottom: 5px;
-        }
-
-        .header .headline {
+        
+        .logo {
             font-size: 1.3rem;
-            font-weight: 300;
-            margin-bottom: 25px;
-            opacity: 0.9;
-            color: var(--mambu-green-bright); /* Headline in bright green */
+            font-weight: 700;
+            color: var(--mambu-text);
         }
-
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px 30px;
-            font-size: 0.95rem; /* Slightly larger contact */
+        
+        .logo span {
+            color: var(--mambu-primary);
         }
-
-        .contact-info span { /* Added for structure */
-            display: inline-flex; /* Align icon and text */
-            align-items: center;
+        
+        nav a:not(.btn) {
+            margin-left: 32px;
+            color: var(--mambu-text);
+            font-weight: 500;
         }
-
-        .contact-info a {
-            color: var(--light-text);
-            opacity: 0.85;
-            font-weight: 400; /* Normal weight for contacts */
-            transition: opacity 0.3s ease;
+        
+        nav a:not(.btn):hover {
+            color: var(--mambu-primary);
         }
-
-        .contact-info a:hover {
-            opacity: 1;
-            color: var(--mambu-green-bright); /* Hover effect */
+        
+        nav .btn {
+            margin-left: 32px;
         }
-
-        /* --- Profile / Intro Section --- */
-        #profile {
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, rgba(0, 176, 144, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 176, 144, 0.15) 0%, rgba(0, 176, 144, 0) 70%);
+            z-index: -1;
+        }
+        
+        .hero:after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            left: -200px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 176, 144, 0.1) 0%, rgba(0, 176, 144, 0) 70%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
             text-align: center;
         }
-        #profile p {
-            max-width: 800px; /* Constrain width for readability */
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 24px;
+            background: linear-gradient(90deg, var(--mambu-text) 0%, var(--mambu-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--mambu-text-light);
+            margin-bottom: 32px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
-
-        /* --- Why Mambu Section --- */
-        #why-mambu .why-mambu-content {
+        
+        .quote {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: var(--mambu-radius);
+            box-shadow: var(--mambu-shadow);
+            margin: 0 auto 40px;
             max-width: 800px;
-            margin: 0 auto;
+            position: relative;
+            font-style: italic;
+            color: var(--mambu-text-light);
             text-align: center;
         }
-
-        /* --- Experience Section --- */
-        .experience-item {
-            margin-bottom: 35px;
-            padding: 25px;
-            background-color: var(--background-light);
-            border-radius: 8px; /* Slightly rounded corners */
-            border: 1px solid var(--border-color); /* Subtle border */
-            box-shadow: 0 3px 8px rgba(0,0,0,0.05); /* Softer shadow */
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        
+        .quote:before, .quote:after {
+            content: '"';
+            position: absolute;
+            font-size: 4rem;
+            color: var(--mambu-primary);
+            opacity: 0.2;
+            line-height: 1;
         }
-        .experience-item:hover {
-             box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-             transform: translateY(-3px);
+        
+        .quote:before {
+            top: 10px;
+            left: 20px;
         }
-
-        .experience-item header {
+        
+        .quote:after {
+            bottom: -30px;
+            right: 20px;
+        }
+        
+        .hero-btns {
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            align-items: center; /* Vertically align items */
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border-color);
+            justify-content: center;
+            gap: 16px;
         }
-
-        .experience-item h3 {
-            margin-bottom: 0;
-            font-size: 1.2rem; /* Slightly smaller job title */
+        
+        /* Alignment Section */
+        .alignment {
+            padding: 120px 0;
+            position: relative;
         }
-
-        .experience-item .date-location {
-            font-size: 0.9rem;
-            color: #777;
-            text-align: right;
-            font-weight: 300; /* Lighter weight for date */
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
         }
-
-        .experience-item .title { /* Role title */
-            font-weight: 600;
-            color: var(--dark-text);
-            margin-top: 5px; /* Space between company and title */
-            margin-bottom: 15px;
-            display: block;
-            font-size: 1.05rem;
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            position: relative;
+            display: inline-block;
         }
-
-        /* --- Skills Section --- */
-        .skills-grid {
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--mambu-primary);
+        }
+        
+        .section-header p {
+            color: var(--mambu-text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .align-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust minmax */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
-
-        .skill-category {
-            padding: 25px;
-            background-color: var(--background-light);
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.03); /* Very subtle shadow */
+        
+        .align-item {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: var(--mambu-radius);
+            box-shadow: var(--mambu-shadow);
+            transition: var(--mambu-transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
-
-        .skill-category h3 {
-             margin-bottom: 15px;
-             padding-bottom: 8px;
-             border-bottom: 2px solid var(--mambu-green-dark); /* Green underline */
-             display: inline-block; /* Underline fits text */
-             font-size: 1.15rem;
+        
+        .align-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
-
-
-        /* --- Call to Action Section --- */
-        #cta {
+        
+        .align-item-icon {
+            margin-bottom: 24px;
+            width: 64px;
+            height: 64px;
+            background-color: rgba(0, 176, 144, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .align-item-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--mambu-primary);
+        }
+        
+        .align-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--mambu-text);
+        }
+        
+        .align-item p {
+            color: var(--mambu-text-light);
+            flex-grow: 1;
+        }
+        
+        /* Experience Section */
+        .experience {
+            padding: 120px 0;
+            background-color: var(--mambu-light);
+            position: relative;
+        }
+        
+        .experience-grid {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .experience-item {
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--mambu-radius);
+            box-shadow: var(--mambu-shadow);
+            transition: var(--mambu-transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .experience-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--mambu-primary);
+        }
+        
+        .experience-header {
+            margin-bottom: 20px;
+        }
+        
+        .experience-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        
+        .experience-title h3 {
+            font-size: 1.5rem;
+            color: var(--mambu-text);
+        }
+        
+        .experience-title span {
+            color: var(--mambu-primary);
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: 16px;
+        }
+        
+        .experience-company {
+            display: flex;
+            align-items: center;
+            color: var(--mambu-text-light);
+            font-size: 1.1rem;
+        }
+        
+        .experience-company svg {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            fill: var(--mambu-text-light);
+        }
+        
+        .experience-content p {
+            color: var(--mambu-text-light);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 120px 0;
             text-align: center;
-            background: var(--background-medium); /* Light background CTA */
-            color: var(--dark-text);
-            border-bottom: none; /* Remove border on last section */
+            position: relative;
+            overflow: hidden;
         }
-        #cta h2 {
-             color: var(--mambu-green-dark); /* Green heading */
+        
+        .contact:before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 176, 144, 0.1) 0%, rgba(0, 176, 144, 0) 70%);
+            z-index: -1;
         }
-        #cta p {
-             color: var(--medium-text);
-             max-width: 650px;
-             margin: 0 auto 35px auto; /* Increased bottom margin */
+        
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
         }
-        #cta .btn {
-            margin: 10px 15px;
+        
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
         }
-
-
-        /* --- Footer --- */
+        
+        .contact p {
+            color: var(--mambu-text-light);
+            margin-bottom: 40px;
+        }
+        
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-method {
+            background-color: white;
+            padding: 24px;
+            border-radius: var(--mambu-radius);
+            box-shadow: var(--mambu-shadow);
+            min-width: 200px;
+            transition: var(--mambu-transition);
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(0, 176, 144, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--mambu-primary);
+        }
+        
+        .contact-method h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--mambu-text);
+        }
+        
+        .contact-method p {
+            color: var(--mambu-primary);
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+        
+        /* Footer */
         footer {
+            padding: 24px 0;
+            background-color: var(--mambu-text);
+            color: white;
             text-align: center;
-            padding: 30px 20px;
-            font-size: 0.9rem;
-            color: #999; /* Lighter footer text */
-            margin-top: 0; /* Remove top margin */
-            background-color: var(--dark-text); /* Dark footer */
-            color: var(--background-medium);
         }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.9rem; }
-            h3 { font-size: 1.15rem; }
-
-            .header img.headshot { width: 140px; height: 140px; }
-            .header .headline { font-size: 1.1rem;}
-
-            .contact-info { gap: 10px 20px; }
-
-            .experience-item header {
-                 flex-direction: column;
-                 align-items: flex-start;
-                 gap: 8px;
-             }
-             .experience-item .date-location {
-                 text-align: left;
-             }
-
-            .skills-grid {
-                 grid-template-columns: 1fr; /* Stack skills */
+        
+        footer p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+        
+        .delay-4 {
+            transition-delay: 0.4s;
+        }
+        
+        .delay-5 {
+            transition-delay: 0.5s;
+        }
+        
+        /* Responsive Styles */
+        @media screen and (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
             }
         }
-
-        @media (max-width: 480px) {
-             body { font-size: 15px; } /* Adjust base font size */
-             h1 { font-size: 1.9rem; }
-             h2 { font-size: 1.7rem; }
-             .header img.headshot { width: 120px; height: 120px; }
-             .header .headline { font-size: 1rem; }
-             .contact-info span { display: block; margin-bottom: 8px; text-align: center;} /* Stack contact items fully */
-             .contact-info { flex-direction: column; gap: 10px;} /* Stack contacts */
-             .btn { padding: 12px 25px; font-size: 0.9rem;} /* Adjust button padding */
-             #cta .btn { display: block; margin: 15px auto; max-width: 250px;} /* Stack buttons */
+        
+        @media screen and (max-width: 768px) {
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .section-header {
+                margin-bottom: 60px;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .align-grid, .experience-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-title {
+                flex-direction: column;
+            }
+            
+            .experience-title span {
+                margin-left: 0;
+                margin-top: 8px;
+            }
+            
+            .contact-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-method {
+                width: 100%;
+                max-width: 300px;
+            }
         }
-
+        
+        @media screen and (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .quote {
+                padding: 24px;
+            }
+            
+            .experience-item {
+                padding: 30px;
+            }
+        }
+        
+        /* Composable Banking Visualization */
+        .composable {
+            margin: 80px 0;
+            position: relative;
+        }
+        
+        .composable-visual {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .composable-item {
+            background-color: white;
+            padding: 24px;
+            border-radius: var(--mambu-radius);
+            box-shadow: var(--mambu-shadow);
+            width: 180px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: var(--mambu-transition);
+            position: relative;
+        }
+        
+        .composable-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .composable-icon {
+            width: 64px;
+            height: 64px;
+            background-color: rgba(0, 176, 144, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        
+        .composable-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--mambu-primary);
+        }
+        
+        .composable-item h3 {
+            font-size: 1rem;
+            margin-bottom: 0;
+            color: var(--mambu-text);
+        }
+        
+        .composable-connect {
+            position: absolute;
+            border-top: 2px dashed var(--mambu-primary);
+            width: 40px;
+            height: 2px;
+            top: 50%;
+            right: -30px;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
-    <header class="header">
+    <header>
         <div class="container header-content">
-            <!-- Make SURE the filename 'eric_oberndorfer_headshot.jpg' is EXACTLY correct and in the same folder as index.html -->
-                        <img src="eric-headshot.jpg" alt="Eric Oberndorfer Headshot" class="headshot">
-            <h1>Eric Oberndorfer</h1>
-            <p class="headline">Driving Customer Success & Long-Term Value in Fintech | Aspiring Mambu CSM</p>
-            <div class="contact-info">
-                <span><a href="mailto:E.Obern@gmail.com">E.Obern@gmail.com</a></span>
-                <span><a href="tel:619-733-5323">619-733-5323</a></span>
-                <span>San Diego, CA</span>
-                <span><a href="https://linkedin.com/in/ericoberndorfer" target="_blank" rel="noopener noreferrer">linkedin.com/in/ericoberndorfer</a></span>
-            </div>
+            <div class="logo">Eric <span>Oberndorfer</span></div>
+            <nav>
+                <a href="#alignment">Alignment</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact" class="btn">Contact Me</a>
+            </nav>
         </div>
     </header>
-
-    <main>
-        <!-- Profile / Introduction -->
-        <section id="profile" class="container">
-            <h2>Dedicated Customer Advocate & Strategic Partner</h2>
-            <p>Dynamic and results-driven leader transitioning over a decade of expertise in strategic partnerships, client relationship management, and team leadership into the Customer Success space. Passionate about fostering long-term client value within innovative SaaS and Fintech environments like Mambu's.</p>
-            <p>Proven ability to build high-trust relationships, deeply understand client needs, drive solution adoption, and ensure client retention and satisfaction. Adept at developing impactful training, enhancing customer experiences, and navigating complex challenges to achieve mutual growth and organizational success.</p>
-        </section>
-
-        <!-- Why Mambu / Why this Role -->
-        <section id="why-mambu">
-            <div class="container why-mambu-content">
-                <h2>Why Mambu? Why Customer Success?</h2>
-                <p>Mambu's mission to revolutionize banking through flexible, cloud-native, composable technology deeply resonates with my interest in innovative solutions that empower businesses. I'm particularly drawn to the potential to help financial institutions leverage Mambu's platform for tangible growth and transformation.</p>
-                <p>The Customer Success Manager role perfectly aligns with my core strengths and passion for building lasting, high-value client relationships beyond the initial sale. I thrive on understanding client goals, ensuring they maximize platform value, championing their needs, and ultimately contributing to their sustained success – which is the essence of effective Customer Success.</p>
+    
+    <section class="hero" id="hero">
+        <div class="container hero-content">
+            <h1 class="fade-in">Building Lasting Partnerships for Mambu</h1>
+            <p class="fade-in delay-1">Results-driven relationship builder aligned with Mambu's mission to make banking better for a billion people through strategic customer partnerships and advocacy.</p>
+            
+            <div class="quote fade-in delay-2">
+                "We are in it for the long run. The pillars of our approach provide personalised and continuous strategic value to help you scale and grow for today and into the future."
             </div>
-        </section>
-
-        <!-- Professional Experience (CSM Lens) -->
-        <section id="experience" class="container">
-            <h2>Relevant Experience Highlights</h2>
-
-            <article class="experience-item">
-                <header>
-                    <div>
-                        <h3>California Superbike School</h3>
-                        <span class="title">Wrangler, Student Services</span>
-                    </div>
-                    <div class="date-location">
-                        03/2024 – present | San Diego, CA
-                    </div>
-                </header>
-                <ul>
-                    <li>Enhanced Customer Experience by orchestrating comprehensive student services in a high-stakes environment, achieving the highest department satisfaction rating during tenure.</li>
-                    <li>Ensured Seamless Onboarding & Operations through meticulous management of daily logistics (onboarding, gear, safety checks), resulting in consistently positive student feedback.</li>
-                    <li>Drove Adoption of Innovative Technologies (360 cameras, telemetry bikes, eye-tracking) to substantially enhance coaching effectiveness and student experience.</li>
-                    <li>Contributed Strategically to specialized Military Training classes, improving safety protocols and skill development for service personnel.</li>
-                </ul>
-            </article>
-
-            <article class="experience-item">
-                <header>
-                    <div>
-                        <h3>Planet Technology</h3>
-                         <span class="title">Director, Business Development, Team Lead</span>
-                    </div>
-                     <div class="date-location">
-                        09/2021 – 12/2023 | San Diego, CA
-                    </div>
-                </header>
-                 <ul>
-                    <li>Increased Client Lifetime Value across 14 states by revitalizing key accounts and implementing strategies that significantly improved client retention.</li>
-                    <li>Built & Led High-Performing Remote Teams across the West Coast/Southwest, fostering cohesion and productivity through mentorship and team-building.</li>
-                    <li>Established Strategic MSP Relationships (as Business Development Manager, 01/2021 - 09/2023), creating lasting revenue streams and driving significant business growth.</li>
-                     <li>Spearheaded Internal Collaboration by establishing a cross-divisional sales initiative, improving client penetration and solution adoption across business units.</li>
-                    <li>Developed & Delivered Impactful Training Programs ("Written Communication," "On The Meeting"), recognized consistently as a top trainer, demonstrating ability to effectively educate users.</li>
-                    <li>Partnered Cross-Functionally with CHRO to establish and manage a new regional office, overseeing operations and serving as primary leadership contact.</li>
-                </ul>
-            </article>
-
-             <article class="experience-item">
-                <header>
-                    <div>
-                        <h3>KForce</h3>
-                        <span class="title">Client Relations Manager</span>
-                     </div>
-                     <div class="date-location">
-                        09/2019 – 01/2021 | San Diego, CA
-                    </div>
-                </header>
-                <ul>
-                    <li>Managed Complex Client Relationships end-to-end (tech staffing/consulting), ensuring smooth onboarding and fostering long-term partnerships post-sale for large/enterprise clients.</li>
-                    <li>Maintained Consistent Client Growth & Retention through proactive relationship management, successfully navigating the challenging business landscape during the COVID-19 pandemic.</li>
-                 </ul>
-            </article>
-
-            <article class="experience-item">
-                 <header>
-                    <div>
-                        <h3>Cox Business</h3>
-                         <span class="title">Account Executive</span>
-                    </div>
-                     <div class="date-location">
-                         07/2016 – 10/2018 | San Diego, CA
-                    </div>
-                 </header>
-                 <ul>
-                    <li>Managed SMB & Enterprise Accounts, successfully transitioning to spearhead major network expansion projects requiring substantial revenue commitments and long-term client engagement.</li>
-                    <li>Enhanced Internal Communication & Employee Engagement by creating, hosting, and producing an internal podcast series featuring senior/executive leadership.</li>
-                </ul>
-             </article>
-
-            <article class="experience-item">
-                <header>
-                    <div>
-                        <h3>AT&T</h3>
-                        <span class="title">Retail Sales Consultant</span>
-                    </div>
-                    <div class="date-location">
-                        10/2012 – 03/2016 | San Diego, CA
-                    </div>
-                </header>
-                <ul>
-                    <li>Delivered Exceptional Customer Service & Sales at a flagship retail location, consistently recognized as a top performer.</li>
-                    <li>Piloted Innovative Sales Technologies & Processes within the elite "Store of the Future" initiative, demonstrating adaptability and contribution to best practices.</li>
-                </ul>
-            </article>
-        </section>
-
-         <!-- Key Skills -->
-        <section id="skills">
-            <div class="container">
-                <h2>Key Skills & Competencies</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Customer Success & Relationship Management</h3>
-                        <ul>
-                            <li>Strategic Account Management</li>
-                            <li>Client Retention & Loyalty Building</li>
-                            <li>Customer Onboarding & Experience Management</li>
-                            <li>High-Value Relationship Building (Affluent, Executive)</li>
-                            <li>Client Advocacy & Issue Resolution</li>
-                            <li>MSP & Enterprise Partnership Management</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Training, Enablement & Adoption</h3>
-                        <ul>
-                            <li>Curriculum Development & Delivery</li>
-                            <li>Driving User Adoption of New Technologies</li>
-                            <li>Coaching & Mentorship</li>
-                            <li>National Sales Training Program Implementation</li>
-                            <li>Recognized as Top Trainer (Peer/Student Voted)</li>
-                         </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Leadership & Collaboration</h3>
-                        <ul>
-                            <li>Remote/Distributed Team Leadership</li>
-                            <li>Cross-functional Coordination (Sales, Ops, Leadership)</li>
-                            <li>Internal Stakeholder Management</li>
-                            <li>Employee Engagement & Culture Building</li>
-                            <li>Regional Office Management</li>
-                        </ul>
-                    </div>
-                     <div class="skill-category">
-                        <h3>Communication & Presentation</h3>
-                         <ul>
-                            <li>Public Speaking & Podcast Hosting</li>
-                            <li>Executive Communication & Reporting</li>
-                            <li>Presenting at Events, Trainings, Workshops</li>
-                            <li>Strategic Written Communications (Blogs, Training)</li>
-                        </ul>
-                    </div>
-                     <div class="skill-category">
-                        <h3>Technical Acumen & Adaptability</h3>
-                         <ul>
-                            <li>CRM & Sales Technology Tools (Salesforce, Bullhorn)</li>
-                            <li>Implementation of Emerging Technologies</li>
-                             <li>Operational Excellence & Process Improvement</li>
-                            <li>Proven Adaptability in Challenging Markets (COVID, Recession)</li>
-                             <li>Quick Learning in New Environments/Industries</li>
-                         </ul>
-                    </div>
-                     <div class="skill-category">
-                         <h3>Business Acumen</h3>
-                         <ul>
-                             <li>Business Development Fundamentals</li>
-                             <li>Sales Cycle Management Acumen</li>
-                             <li>Contract Negotiation Understanding</li>
-                             <li>Complex Solution Selling Principles</li>
-                             <li>Consultative Approach</li>
-                         </ul>
-                     </div>
-                 </div>
-             </div>
-         </section>
-
-         <!-- Call to Action -->
-         <section id="cta">
-             <div class="container">
-                 <h2>Let's Connect</h2>
-                 <p>I am eager to discuss how my dedication to building strong client partnerships and driving measurable success can contribute to Mambu and its customers. Please download my full resume for more details or reach out directly.</p>
-                 <a href="eric_oberndorfer_resume.pdf" download class="btn">Download Resume (PDF)</a>
-                 <a href="https://linkedin.com/in/ericoberndorfer" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">View LinkedIn Profile</a>
+            
+            <div class="hero-btns fade-in delay-3">
+                <a href="#alignment" class="btn">See How We Align</a>
+                <a href="mailto:E.Obern@gmail.com" class="btn btn-outline">Contact Me</a>
             </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-             © 2024 Eric Oberndorfer | Tailored for Mambu Customer Success
         </div>
-    </footer>
-
-    <!-- Basic JS can be added here if needed -->
-    <script>
-        console.log("Eric Oberndorfer's Mambu CSM Target Page Loaded - v2");
-    </script>
-
-</body>
-</html>
+    </section>
+    
+    <section class="alignment" id="alignment">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="fade-in">Where My Experience Meets Mambu's Vision</h2>
+                <p class="fade-in delay-1">Bringing proven expertise in relationship management and strategic customer success to support Mambu's cloud-native banking platform.</p>
+            </div>
+            
+            <div class="align-grid">
+                <div class="align-item fade-in delay-1">
+                    <div class="align-item-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                        </svg>
+                    </div>
+                    <h3>Strategic Customer Relationships</h3>
+                    <p>Over a decade of proven expertise building and nurturing high-value partnerships at all organizational levels. Successfully revitalized key accounts and significantly improved client retention through strategic engagement and personalized service.</p>
+                </div>
+                
+                <div class="align-item fade-in delay-2">
+                    <div class="align-item-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                        </svg>
+                    </div>
+                    <h3>Consistent Performance Excellence</h3>
+                    <p>Documented track record of exceeding targets across multiple industries and roles. Consistently recognized for outstanding performance, including exceeding 12-month sales goals in just six months and achieving the highest department satisfaction ratings.</p>
+                </div>
+                
+                <div class="align-item fade-in delay-3">
+                    <div class="align-item-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                    </div>
+                    <h3>Cross-Boundary Collaboration</h3>
+                    <p>Extensive experience managing geographically dispersed teams and working across organizational boundaries. Led strategic initiatives across 14 states, coordinating between various stakeholders to ensure alignment and successful outcomes.</p>
+                </div>
+                
+                <div class="align-item fade-in delay-4">
+                    <div class="align-item-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/>
+                        </svg>
+                    </div>
+                    <h3>Executive Engagement & Governance</h3>
+                    <p>Skilled in maintaining effective communication with executive teams, having created and hosted an internal podcast interviewing senior leadership. Experienced in preparing and delivering strategic presentations that drive alignment and transparency.</p>
+                </div>
+            </div>
+            
+            <div class="composable">
+                <div class="section-header">
+                    <h2 class="fade-in">A Composable Approach</h2>
+                    <p class="fade-in delay-1">Just as Mambu enables financial institutions to build exactly what they need with a composable approach, my skills combine to create the perfect customer success foundation.</p>
+                </div>
+                
+                <div class="composable-visual">
+                    <div class="composable-item fade-in delay-1">
+                        <div class="composable-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                            </svg>
+                        </div>
+                        <h3>Relationship Building</h3>
+                        <span class="composable-connect"></span>
+                    </div>
+                    
+                    <div class="composable-item fade-in delay-2">
+                        <div class="composable-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+                            </svg>
+                        </div>
+                        <h3>Performance Excellence</h3>
+                        <span class="composable-connect"></span>
+                    </div>
+                    
+                    <div class="composable-item fade-in delay-3">
+                        <div class="composable-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                            </svg>
+                        </div>
+                        <h3>Adaptability</h3>
+                        <span class="composable-connect"></span>
+                    </div>
+                    
+                    <div class="composable-item fade-in delay-4">
+                        <div class="composable-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2
