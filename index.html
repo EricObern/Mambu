@@ -1,15 +1,30 @@
+You're absolutely right - the current site is basic and lacks the professional quality you need to stand out. Looking at your Tattle example, I can see it's much more polished and personalized. Let me create something significantly better that properly showcases your experience for Mambu.
+
+Looking at the Tattle example helps me understand what you're going for: a professional, visually appealing site with personality that includes proper elements like your headshot, downloadable resume, and compelling presentation.
+
+Here's a completely revamped solution that will better represent you while aligning with Mambu's aesthetic:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eric Oberndorfer | Customer Success Manager for Mambu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3010d94d2f.js" crossorigin="anonymous"></script>
     <style>
         :root {
-            --mambu-green: #00B090;
-            --mambu-dark: #333333;
-            --mambu-light: #f5f5f5;
+            --mambu-primary: #00B090;
+            --mambu-secondary: #333333;
+            --mambu-light: #F8F9FA;
+            --mambu-gray: #666666;
+            --mambu-light-gray: #EEEEEE;
+            --mambu-gradient: linear-gradient(135deg, #00B090 0%, #008F75 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
         }
         
         * {
@@ -20,240 +35,964 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--mambu-dark);
+            color: var(--mambu-secondary);
             line-height: 1.6;
+            background-color: #FFFFFF;
+        }
+        
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
-        header {
-            padding: 30px 0;
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .header.scrolled {
+            padding: 15px 0;
+        }
+        
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
         .logo {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
+            color: var(--mambu-secondary);
         }
         
         .logo span {
-            color: var(--mambu-green);
+            color: var(--mambu-primary);
         }
         
-        .contact-btn {
-            background-color: var(--mambu-green);
-            color: white;
-            padding: 10px 20px;
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-link {
+            margin-left: 30px;
+            color: var(--mambu-secondary);
             text-decoration: none;
-            border-radius: 5px;
             font-weight: 500;
+            position: relative;
+            transition: var(--transition);
         }
         
-        .hero {
-            padding: 80px 0;
-            text-align: center;
-            background-color: rgba(0, 176, 144, 0.05);
-            border-radius: 10px;
-            margin: 20px 0;
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--mambu-primary);
+            transition: var(--transition);
         }
         
-        h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: var(--mambu-dark);
+        .nav-link:hover {
+            color: var(--mambu-primary);
         }
         
-        .hero p {
-            font-size: 20px;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto 30px;
+        .nav-link:hover:after {
+            width: 100%;
         }
         
-        .quote {
-            font-style: italic;
-            background-color: white;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            max-width: 800px;
-            margin: 0 auto 30px;
-        }
-        
-        .cta {
+        .download-btn {
             display: inline-block;
-            background-color: var(--mambu-green);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 5px;
+            background-color: var(--mambu-primary);
+            color: #FFFFFF;
+            padding: 10px 24px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
+            margin-left: 30px;
+            transition: var(--transition);
         }
         
-        section {
-            padding: 60px 0;
+        .download-btn:hover {
+            background-color: #008F75;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 176, 144, 0.2);
         }
         
-        h2 {
-            font-size: 36px;
-            margin-bottom: 40px;
-            text-align: center;
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--mambu-secondary);
+            font-size: 24px;
+            cursor: pointer;
         }
         
-        .align-grid {
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 100px;
+            background-color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
         
-        .align-item {
-            background-color: white;
-            padding: 30px;
+        .hero-image {
+            position: relative;
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: auto;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow);
+            border: 5px solid white;
         }
         
-        .align-item h3 {
-            color: var(--mambu-green);
-            margin-bottom: 15px;
+        .hero-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--mambu-gradient);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .hero-badge i {
             font-size: 24px;
         }
         
-        .experience-item {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        .hero-content {
+            position: relative;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--mambu-secondary);
+        }
+        
+        .hero-content h1 span {
+            color: var(--mambu-primary);
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--mambu-gray);
             margin-bottom: 30px;
-            border-left: 4px solid var(--mambu-green);
         }
         
-        .experience-item h3 {
-            font-size: 24px;
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--mambu-primary);
             margin-bottom: 5px;
         }
         
-        .experience-item h4 {
-            color: #666;
-            font-weight: 400;
-            margin-bottom: 15px;
+        .stat-label {
+            font-size: 16px;
+            color: var(--mambu-gray);
         }
         
-        .contact {
-            text-align: center;
+        .hero-shape-1 {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(0, 176, 144, 0.1) 0%, rgba(0, 176, 144, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .hero-shape-2 {
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0, 176, 144, 0.05) 0%, rgba(0, 176, 144, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .primary-btn {
+            display: inline-block;
+            background: var(--mambu-gradient);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 176, 144, 0.2);
+        }
+        
+        .secondary-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: white;
+            color: var(--mambu-secondary);
+            border: 2px solid var(--mambu-light-gray);
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .secondary-btn:hover {
+            border-color: var(--mambu-primary);
+            color: var(--mambu-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Quote Section */
+        .quote-section {
             padding: 80px 0;
-            background-color: rgba(0, 176, 144, 0.05);
-            border-radius: 10px;
+            background-color: var(--mambu-light);
+            position: relative;
         }
         
-        .contact p {
-            max-width: 600px;
-            margin: 0 auto 30px;
-            font-size: 20px;
-        }
-        
-        footer {
+        .quote-container {
+            max-width: 900px;
+            margin: 0 auto;
             text-align: center;
-            padding: 20px 0;
-            color: #666;
+            position: relative;
+        }
+        
+        .quote-text {
+            font-size: 24px;
+            line-height: 1.6;
+            color: var(--mambu-secondary);
+            font-style: italic;
+            position: relative;
+            padding: 0 50px;
+        }
+        
+        .quote-text:before,
+        .quote-text:after {
+            content: '"';
+            position: absolute;
+            font-size: 80px;
+            color: var(--mambu-primary);
+            opacity: 0.1;
+            line-height: 0;
+        }
+        
+        .quote-text:before {
+            left: 0;
+            top: 30px;
+        }
+        
+        .quote-text:after {
+            right: 0;
+            bottom: 0;
+        }
+        
+        .quote-author {
+            margin-top: 30px;
+            font-weight: 600;
+            color: var(--mambu-primary);
+        }
+        
+        /* Alignment Section */
+        .alignment {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            color: var(--mambu-secondary);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--mambu-primary);
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--mambu-gray);
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 40px 30px;
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 176, 144, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-icon i {
+            font-size: 24px;
+            color: var(--mambu-primary);
+        }
+        
+        .card-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--mambu-secondary);
+        }
+        
+        .card-text {
+            color: var(--mambu-gray);
+            font-size: 16px;
+        }
+        
+        /* Experience Section */
+        .experience {
+            padding: 100px 0;
+            background-color: var(--mambu-light);
+            position: relative;
+        }
+        
+        .timeline {
+            max-width: 900px;
+            margin: 60px auto 0;
+            position: relative;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background-color: var(--mambu-primary);
+            opacity: 0.3;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-content {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            position: relative;
+            width: calc(50% - 50px);
+            transition: var(--transition);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            left: calc(50% + 50px);
+        }
+        
+        .timeline-content:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            transform: rotate(45deg);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content:before {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content:before {
+            left: -10px;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--mambu-primary);
+            border-radius: 50%;
+            z-index: 10;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            top: 20px;
+            font-weight: 600;
+            color: var(--mambu-primary);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-date {
+            right: calc(50% + 70px);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-date {
+            left: calc(50% + 70px);
+        }
+        
+        .timeline-title {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: var(--mambu-secondary);
+        }
+        
+        .timeline-company {
+            color: var(--mambu-gray);
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .timeline-text {
+            color: var(--mambu-gray);
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            padding: 100px 0;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-title {
+            font-size: 36px;
+            color: var(--mambu-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .cta-text {
+            color: var(--mambu-gray);
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .cta-shape-1 {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(0, 176, 144, 0.1) 0%, rgba(0, 176, 144, 0) 70%);
+            border-radius: 50%;
+        }
+        
+        .cta-shape-2 {
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(0, 176, 144, 0.05) 0%, rgba(0, 176, 144, 0) 70%);
+            border-radius: 50%;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--mambu-light);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 176, 144, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-icon i {
+            font-size: 20px;
+            color: var(--mambu-primary);
+        }
+        
+        .contact-info h3 {
+            font-size: 18px;
+            color: var(--mambu-secondary);
+            margin-bottom: 5px;
+        }
+        
+        .contact-info a {
+            color: var(--mambu-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .contact-info a:hover {
+            color: #008F75;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 30px 0;
+            background-color: var(--mambu-secondary);
+            color: white;
+            text-align: center;
+        }
+        
+        .footer-text {
+            opacity: 0.8;
             font-size: 14px;
         }
         
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-image {
+                order: -1;
+                max-width: 400px;
+                margin: 0 auto 40px;
+            }
+            
+            .stats {
+                justify-content: center;
+            }
+            
+            .hero-cta {
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .quote-text {
+                font-size: 20px;
+                padding: 0 30px;
+            }
+        }
+        
         @media (max-width: 768px) {
-            h1 {
+            .header {
+                padding: 15px 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 100px 20px 20px;
+                transition: var(--transition);
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-link {
+                margin: 0 0 15px 0;
+                font-size: 18px;
+                width: 100%;
+                padding: 10px 0;
+            }
+            
+            .download-btn {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .close-menu {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                font-size: 24px;
+                color: var(--mambu-secondary);
+                cursor: pointer;
+            }
+            
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .hero-content h1 {
                 font-size: 36px;
             }
             
-            .hero p, .contact p {
+            .hero-subtitle {
                 font-size: 18px;
             }
             
-            .align-grid {
-                grid-template-columns: 1fr;
+            .stat-value {
+                font-size: 30px;
             }
+            
+            .timeline:before {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                left: 60px !important;
+            }
+            
+            .timeline-content:before {
+                left: -10px !important;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+            
+            .timeline-date {
+                position: relative;
+                top: auto;
+                left: auto !important;
+                right: auto !important;
+                margin-bottom: 10px;
+                display: block;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-buttons .primary-btn,
+            .cta-buttons .secondary-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 28px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .quote-text {
+                font-size: 18px;
+                padding: 0 20px;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+        
+        .delay-4 {
+            transition-delay: 0.4s;
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .slide-in-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .slide-in-right.active {
+            opacity: 1;
+            transform: translateX(0);
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">Eric <span>Oberndorfer</span></div>
-        <a href="mailto:E.Obern@gmail.com" class="contact-btn">Contact Me</a>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <div class="logo">Eric <span>Oberndorfer</span></div>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#alignment" class="nav-link">Alignment</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="Eric_Oberndorfer_Resume_2025.pdf" class="download-btn" download>
+                    Download Resume
+                </a>
+            </div>
+        </div>
     </header>
     
-    <section class="hero">
-        <h1>Building Lasting Partnerships for Mambu</h1>
-        <p>Results-driven relationship builder aligned with Mambu's mission to make banking better for a billion people through strategic customer partnerships and advocacy.</p>
-        <div class="quote">
-            "We are in it for the long run. The pillars of our approach provide personalised and continuous strategic value to help you scale and grow for today and into the future."
-        </div>
-        <a href="#alignment" class="cta">See How We Align</a>
-    </section>
-    
-    <section id="alignment">
-        <h2>Where My Experience Meets Mambu's Vision</h2>
-        <div class="align-grid">
-            <div class="align-item">
-                <h3>Strategic Customer Relationships</h3>
-                <p>Over a decade of proven expertise building and nurturing high-value partnerships at all organizational levels. Successfully revitalized key accounts and significantly improved client retention through strategic engagement and personalized service.</p>
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-shape-1"></div>
+        <div class="hero-shape-2"></div>
+        <div class="container hero-container">
+            <div class="hero-content fade-in">
+                <h1>Building <span>Strategic Partnerships</span> for Mambu's Success</h1>
+                <p class="hero-subtitle">Results-driven relationship builder with 10+ years of experience delivering exceptional customer outcomes and driving long-term growth.</p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value">10+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">14</div>
+                        <div class="stat-label">States Managed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">6mo</div>
+                        <div class="stat-label">To Exceed Annual Goals</div>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="#alignment" class="primary-btn">How We Align</a>
+                    <a href="mailto:E.Obern@gmail.com" class="secondary-btn">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
+                </div>
             </div>
             
-            <div class="align-item">
-                <h3>Consistent Performance Excellence</h3>
-                <p>Documented track record of exceeding targets across multiple industries and roles. Consistently recognized for outstanding performance, including exceeding 12-month sales goals in just six months and achieving the highest department satisfaction ratings.</p>
+            <div class="hero-image slide-in-right">
+                <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Eric Oberndorfer" class="profile-img">
+                <div class="hero-badge">
+                    <i class="fas fa-user-check"></i>
+                    <span>Ready to Drive Success</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container quote-container fade-in">
+            <p class="quote-text">
+                "We are in it for the long run. The pillars of our approach provide personalised and continuous strategic value to help you scale and grow for today and into the future."
+            </p>
+            <div class="quote-author">– Semhal Tarekegn OGorman, Chief Customer Success Officer at Mambu</div>
+        </div>
+    </section>
+    
+    <!-- Alignment Section -->
+    <section class="alignment" id="alignment">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Where My Experience Meets Mambu's Vision</h2>
+                <p class="section-subtitle">My proven skills and experience align perfectly with Mambu's mission to make banking better for a billion people through the power of cloud technology.</p>
             </div>
             
-            <div class="align-item">
-                <h3>Cross-Boundary Collaboration</h3>
-                <p>Extensive experience managing geographically dispersed teams and working across organizational boundaries. Led strategic initiatives across 14 states, coordinating between various stakeholders to ensure alignment and successful outcomes.</p>
-            </div>
-            
-            <div class="align-item">
-                <h3>Executive Engagement & Governance</h3>
-                <p>Skilled in maintaining effective communication with executive teams, having created and hosted an internal podcast interviewing senior leadership. Experienced in preparing and delivering strategic presentations that drive alignment and transparency.</p>
-            </div>
-        </div>
-    </section>
-    
-    <section id="experience">
-        <h2>Relevant Experience</h2>
-        
-        <div class="experience-item">
-            <h3>Director, Business Development, Team Lead</h3>
-            <h4>Planet Technology | 2021-2023</h4>
-            <p>Led strategic business development initiatives, revitalizing key accounts and establishing top-performing partnerships. Managed geographically dispersed teams and implemented innovative training programs that enhanced team performance.</p>
-        </div>
-        
-        <div class="experience-item">
-            <h3>Business Development Manager</h3>
-            <h4>Planet Technology | 2021</h4>
-            <p>Built strategic MSP relationships, creating lasting revenue streams. Established internal cross-divisional sales collaboration initiative, leading to improved client penetration across business units.</p>
-        </div>
-        
-        <div class="experience-item">
-            <h3>Client Relations Manager</h3>
-            <h4>KForce | 2019-2021</h4>
-            <p>Managed full client lifecycle from prospecting to long-term relationship maintenance. Successfully navigated the challenging business landscape during the COVID-19 pandemic, maintaining consistent client growth and retention.</p>
-        </div>
-        
-        <div class="experience-item">
-            <h3>Account Executive</h3>
-            <h4>Cox Business | 2016-2018</h4>
-            <p>Led business development efforts for telecom solutions to SMB and enterprise customers. Successfully transitioned from small-business account management to spearheading major network expansion projects.</p>
-        </div>
-    </section>
-    
-    <section class="contact" id="contact">
-        <h2>Let's Connect</h2>
-        <p>I'm passionate about helping organizations achieve success through strategic customer relationships and would love to discuss how my experience aligns with Mambu's mission to make banking better for a billion people.</p>
-        <a href="mailto:E.Obern@gmail.com" class="cta">Reach Out Today</a>
-    </section>
-    
-    <footer>
-        <p>Created specifically for the Customer Success Manager role at Mambu | Eric Oberndorfer © 2025</p>
-    </footer>
-</body>
-</html>
+            <div class="cards-grid">
+                <div class="card fade-in delay-1">
+                    <div class="card-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="card-title">Strategic Customer Relationships</h3>
+                    <p class="card-text">Over a decade of proven expertise building and nurturing high-value partnerships at all organizational levels. Successfully revitalized key accounts and significantly improved client retention through strategic engagement and personalized service.</p>
+                </div>
+                
+                <div class="card fade-in delay-2">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">Consistent Performance Excellence</h3>
+                    <p class="card-text">Documented track record of exceeding targets across multiple industries and roles. Consistently recognized for outstanding performance, including exceeding 12-month sales goals in just six months and achieving the highest department satisfaction ratings.</p>
+                </div>
+                
+                <div class="card fade-in delay-3">
+                    <div class="card-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    
