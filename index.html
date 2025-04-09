@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- ** Font Awesome Kit Script - Double Check This URL ** -->
+    <!-- Font Awesome Kit Script -->
     <script src="https://kit.fontawesome.com/3010d94d2f.js" crossorigin="anonymous"></script>
     <style>
         :root {
@@ -15,189 +15,215 @@
             --mambu-dark-green: #2DAA5B;  /* Darker hover green */
             --mambu-text-dark: #1A1A1A; /* Near black text */
             --mambu-text-medium: #595959; /* Medium grey */
+            --mambu-text-light: #FFFFFF;
             --mambu-background-light: #FFFFFF;
-            --mambu-background-alt: #F7F3EE; /* Beige/Tan */
-            --mambu-border-light: #EAEAEA;
-            --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.05);
-            --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.08);
+            --mambu-background-alt: #F7F9FA; /* Slightly cooler alternative background */
+            --mambu-border-light: #E0E0E0; /* Softer border */
+            --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.06);
+            --shadow-medium: 0 6px 20px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
-            --border-radius-main: 6px;
+            --border-radius-main: 8px; /* Slightly larger radius for modern feel */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; /* Offset for fixed header */ }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--mambu-text-dark); line-height: 1.65;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: var(--mambu-text-dark);
+            line-height: 1.7; /* Slightly increased line-height for readability */
             background-color: var(--mambu-background-light);
-            overflow-x: hidden; min-height: 100vh; width: 100%;
-            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            min-height: 100vh;
+            width: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px; /* Base font size */
         }
-        .container { max-width: 1140px; margin: 0 auto; padding: 0 15px; width: 100%; }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; width: 100%; }
 
         /* --- Header Styles --- */
         .header {
-            position: fixed; top: 0; left: 0; right: 0; padding: 15px 0;
-            background-color: rgba(255, 255, 255, 0.97); backdrop-filter: blur(8px);
-            z-index: 1000; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.07);
-            transition: padding 0.3s ease; width: 100%;
+            position: fixed; top: 0; left: 0; right: 0;
+            padding: 18px 0; /* Slightly more padding */
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* Safari support */
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: padding 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .logo { font-size: 22px; font-weight: 700; color: var(--mambu-text-dark); text-decoration: none; }
+        .logo { font-size: 24px; font-weight: 700; color: var(--mambu-text-dark); text-decoration: none; }
         .logo span { color: var(--mambu-primary-green); }
-        .nav-links { display: flex; align-items: center; }
-        .nav-link { margin-left: 35px; color: var(--mambu-text-dark); text-decoration: none; font-weight: 500; font-size: 15px; position: relative; transition: var(--transition); }
-        .nav-link:after { display: none; }
+        .nav-links { display: flex; align-items: center; gap: 40px; /* Increased gap */ }
+        .nav-link { color: var(--mambu-text-medium); /* Slightly lighter nav links */ text-decoration: none; font-weight: 500; font-size: 16px; position: relative; transition: var(--transition); }
         .nav-link:hover { color: var(--mambu-primary-green); }
         .download-btn {
             display: inline-flex; align-items: center; gap: 8px;
-            background: var(--mambu-primary-green); color: #FFFFFF; padding: 10px 22px;
+            background: var(--mambu-primary-green); color: var(--mambu-text-light); padding: 10px 24px; /* Slightly wider padding */
             border-radius: var(--border-radius-main); text-decoration: none; font-weight: 600; font-size: 15px;
-            margin-left: 35px; transition: var(--transition); border: none; cursor: pointer;
-            box-shadow: 0 4px 12px rgba(58, 183, 104, 0.2);
+            transition: var(--transition); border: none; cursor: pointer;
+            box-shadow: 0 4px 12px rgba(58, 183, 104, 0.15);
         }
-        .download-btn i { font-size: 14px; }
-        .download-btn:hover { background: var(--mambu-dark-green); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(58, 183, 104, 0.3); }
-        .mobile-toggle { display: none; background: none; border: none; color: var(--mambu-text-dark); font-size: 24px; cursor: pointer; }
+        .download-btn i { font-size: 14px; margin-right: 4px; } /* Icon margin */
+        .download-btn:hover { background: var(--mambu-dark-green); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(58, 183, 104, 0.25); }
+        .mobile-toggle { display: none; background: none; border: none; color: var(--mambu-text-dark); font-size: 24px; cursor: pointer; z-index: 1001; }
         .close-menu { display: none; }
 
         /* --- Hero Section --- */
         .hero {
-            padding: 180px 0 120px; background-color: var(--mambu-background-light);
+            padding: 160px 0 100px; /* Adjusted padding */
+            background-color: var(--mambu-background-light);
             position: relative; overflow: hidden; width: 100%;
-            display: flex; align-items: center;
+            display: flex; align-items: center; margin-top: 70px; /* Account for fixed header height */
         }
-        .hero-container { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center; width: 100%; position: relative; z-index: 1; }
+        .hero-container { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; /* Adjusted gap */ align-items: center; width: 100%; position: relative; z-index: 1; }
         .hero-image { position: relative; text-align: center; }
-        .profile-img { width: 100%; max-width: 420px; height: auto; border-radius: 12px; box-shadow: var(--shadow-medium); border: 6px solid white; display: inline-block; }
+        .profile-img { width: 100%; max-width: 380px; /* Slightly smaller max width */ height: auto; border-radius: var(--border-radius-main); box-shadow: var(--shadow-medium); border: 5px solid white; display: inline-block; }
         .hero-content { position: relative; }
-        .hero-content h1 { font-size: 56px; line-height: 1.2; margin-bottom: 25px; color: var(--mambu-text-dark); font-weight: 700; }
+        .hero-content h1 { font-size: 48px; /* Adjusted size */ line-height: 1.25; margin-bottom: 20px; color: var(--mambu-text-dark); font-weight: 700; }
         .hero-content h1 span { color: var(--mambu-primary-green); }
-        .hero-subtitle { font-size: 19px; color: var(--mambu-text-medium); margin-bottom: 30px; max-width: 540px; }
-        .hero-value-prop { font-size: 18px; color: var(--mambu-text-medium); margin-top: -10px; margin-bottom: 45px; max-width: 540px; }
-        .hero-cta { display: none; }
+        .hero-subtitle { font-size: 18px; color: var(--mambu-text-medium); margin-bottom: 25px; max-width: 520px; font-weight: 400; }
+        .hero-value-prop { font-size: 17px; color: var(--mambu-text-medium); margin-bottom: 40px; max-width: 520px; font-weight: 500; /* Slightly bolder */ }
 
         /* --- Quote Section --- */
-        .quote-section { padding: 90px 0; background-color: var(--mambu-background-alt); position: relative; width: 100%; display: block; }
-        .quote-container { max-width: 850px; margin: 0 auto; text-align: center; position: relative; }
-        .quote-text { font-size: 24px; line-height: 1.7; color: var(--mambu-text-dark); font-style: italic; position: relative; padding: 0 40px; }
-        .quote-text:before, .quote-text:after { content: '"'; position: absolute; font-size: 70px; color: var(--mambu-primary-green); opacity: 0.15; line-height: 0; }
-        .quote-text:before { left: -10px; top: 30px; } .quote-text:after { right: -10px; bottom: -5px; }
-        .quote-author { margin-top: 25px; font-weight: 500; color: var(--mambu-primary-green); font-size: 16px; }
+        .quote-section { padding: 80px 0; background-color: var(--mambu-background-alt); position: relative; width: 100%; }
+        .quote-container { max-width: 800px; margin: 0 auto; text-align: center; position: relative; }
+        .quote-icon { font-size: 40px; color: var(--mambu-primary-green); opacity: 0.3; margin-bottom: 15px; }
+        .quote-text { font-size: 22px; /* Adjusted size */ line-height: 1.7; color: var(--mambu-text-dark); font-style: italic; position: relative; margin-bottom: 20px; font-weight: 400; }
+        .quote-author { font-weight: 500; color: var(--mambu-text-medium); /* Medium text for author */ font-size: 15px; }
+        .quote-author span { color: var(--mambu-primary-green); font-weight: 600; display: block; margin-top: 5px; }
 
         /* --- Alignment Section --- */
-        .alignment { padding: 120px 0; position: relative; width: 100%; display: block; background-color: var(--mambu-background-light); }
-        .section-header { text-align: center; max-width: 800px; margin: 0 auto 70px; }
-        .section-title { font-size: 36px; color: var(--mambu-text-dark); margin-bottom: 18px; position: relative; display: inline-block; font-weight: 700; }
-        .section-title:after { display: none; }
-        .section-subtitle { font-size: 18px; color: var(--mambu-text-medium); line-height: 1.7; }
-        .cards-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
-        @media (min-width: 768px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
+        .alignment { padding: 100px 0; position: relative; width: 100%; background-color: var(--mambu-background-light); }
+        .section-header { text-align: center; max-width: 750px; margin: 0 auto 60px; }
+        .section-title { font-size: 34px; color: var(--mambu-text-dark); margin-bottom: 15px; font-weight: 700; }
+        .section-subtitle { font-size: 17px; color: var(--mambu-text-medium); line-height: 1.7; }
+        .cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; } /* Force 2 columns */
         .card {
             background-color: white; border-radius: var(--border-radius-main); border: 1px solid var(--mambu-border-light);
-            padding: 40px 35px; transition: var(--transition); height: 100%;
-            display: flex; flex-direction: column; box-shadow: none;
+            padding: 35px 30px; transition: var(--transition); height: 100%;
+            display: flex; flex-direction: column; box-shadow: var(--shadow-light); /* Add subtle shadow */
         }
-        .card:hover { transform: translateY(-6px); border-color: var(--mambu-primary-green); box-shadow: var(--shadow-light); }
-        .card-icon { width: 50px; height: 50px; background-color: rgba(58, 183, 104, 0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; flex-shrink: 0; }
-        .card-icon i { font-size: 20px; color: var(--mambu-primary-green); } /* Icon Style */
-        .card-title { font-size: 21px; margin-bottom: 15px; color: var(--mambu-text-dark); font-weight: 600; }
-        .card-text { color: var(--mambu-text-medium); font-size: 16px; flex-grow: 1; }
+        .card:hover { transform: translateY(-5px); border-color: var(--mambu-primary-green); box-shadow: var(--shadow-medium); }
+        .card-icon { width: 45px; height: 45px; background-color: rgba(58, 183, 104, 0.1); border-radius: 50%; /* Circle icon background */ display: flex; align-items: center; justify-content: center; margin-bottom: 20px; flex-shrink: 0; }
+        .card-icon i { font-size: 18px; color: var(--mambu-primary-green); }
+        .card-title { font-size: 20px; margin-bottom: 12px; color: var(--mambu-text-dark); font-weight: 600; }
+        .card-text { color: var(--mambu-text-medium); font-size: 15px; flex-grow: 1; }
 
-        /* --- Experience Section (Stacked Cards) --- */
-        .experience { padding: 120px 0; background-color: var(--mambu-background-alt); position: relative; width: 100%; display: block; }
-        .experience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1140px; margin: 70px auto 0; }
+        /* --- Experience Section --- */
+        .experience { padding: 100px 0; background-color: var(--mambu-background-alt); position: relative; width: 100%; }
+        .experience-grid { display: grid; grid-template-columns: 1fr; gap: 25px; max-width: 900px; margin: 60px auto 0; } /* Single column, centered */
         .experience-card {
             background-color: var(--mambu-background-light); border-radius: var(--border-radius-main);
-            border: 1px solid var(--mambu-border-light); padding: 35px;
-            transition: var(--transition); box-shadow: none;
+            border: 1px solid var(--mambu-border-light); padding: 30px;
+            transition: var(--transition); box-shadow: var(--shadow-light); display: flex; /* Flex layout */ gap: 25px; /* Gap between header and details */
         }
-        .experience-card:hover { transform: translateY(-6px); border-color: var(--mambu-primary-green); box-shadow: var(--shadow-light); }
-        .experience-header { margin-bottom: 18px; border-bottom: 1px solid var(--mambu-border-light); padding-bottom: 12px; }
-        .experience-title { font-size: 19px; margin-bottom: 3px; color: var(--mambu-text-dark); font-weight: 600; line-height: 1.4; }
-        .experience-company { color: var(--mambu-text-medium); margin-bottom: 6px; font-size: 16px; font-style: normal; font-weight: 500; }
-        .experience-date { color: var(--mambu-primary-green); font-size: 14px; font-weight: 600; display: block; margin-bottom: 18px; }
-        .experience-details { color: var(--mambu-text-medium); font-size: 15px; }
-        .experience-details ul { padding-left: 0; margin-top: 12px; list-style: none; }
-        .experience-details li { padding-left: 20px; margin-bottom: 8px; position: relative; line-height: 1.6; }
-        .experience-details li::before { content: '•'; color: var(--mambu-primary-green); position: absolute; left: 5px; top: 1px; font-size: 18px; }
+        .experience-card:hover { transform: translateY(-5px); border-color: var(--mambu-primary-green); box-shadow: var(--shadow-medium); }
+        .experience-header { flex-shrink: 0; width: 200px; /* Fixed width for header */ border-right: 1px solid var(--mambu-border-light); padding-right: 25px; }
+        .experience-title { font-size: 18px; margin-bottom: 4px; color: var(--mambu-text-dark); font-weight: 600; line-height: 1.4; }
+        .experience-company { color: var(--mambu-text-medium); margin-bottom: 8px; font-size: 15px; font-weight: 500; }
+        .experience-date { color: var(--mambu-primary-green); font-size: 14px; font-weight: 600; display: block; }
+        .experience-details { color: var(--mambu-text-medium); font-size: 15px; flex-grow: 1; }
+        .experience-details ul { padding-left: 0; list-style: none; margin-top: 0; }
+        .experience-details li { padding-left: 22px; margin-bottom: 10px; position: relative; line-height: 1.6; }
+        .experience-details li::before { content: '\f00c'; /* Font Awesome check icon */ font-family: 'Font Awesome 5 Free'; font-weight: 900; color: var(--mambu-primary-green); position: absolute; left: 0; top: 2px; font-size: 13px; }
+        .experience-details strong { font-weight: 600; color: var(--mambu-text-dark); }
 
         /* --- Contact Section --- */
-        .contact { padding: 120px 0; background-color: var(--mambu-background-light); width: 100%; display: block; }
-        /* Explicit 3-column grid for desktop */
+        .contact { padding: 100px 0 120px; background-color: var(--mambu-background-light); width: 100%; }
         .contact-container {
-            display: grid;
-            grid-template-columns: 1fr; /* Default mobile */
-            gap: 30px;
-            margin-top: 70px;
-            max-width: 1000px; /* Adjusted max-width */
-             margin-left: auto; margin-right: auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); /* Always 3 columns on desktop */
+            gap: 25px; margin-top: 60px; max-width: 1000px; margin-left: auto; margin-right: auto;
         }
-        /* Force 3 columns on medium screens and up */
-        @media (min-width: 768px) {
-             .contact-container { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        .contact-item { display: flex; align-items: center; gap: 15px; /* Reduced gap */ padding: 25px; /* Reduced padding */ background-color: white; border-radius: var(--border-radius-main); border: 1px solid var(--mambu-border-light); box-shadow: none; transition: var(--transition); }
-        .contact-item:hover { border-color: var(--mambu-primary-green); box-shadow: var(--shadow-light); transform: translateY(-6px); }
-        .contact-icon { width: 40px; height: 40px; background-color: rgba(58, 183, 104, 0.08); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .contact-icon i { font-size: 18px; color: var(--mambu-primary-green); } /* Icon Style */
-        .contact-info { display: flex; flex-direction: column; overflow: hidden; /* Prevent content spill */ }
-        .contact-info h3 { font-size: 17px; color: var(--mambu-text-dark); margin-bottom: 5px; font-weight: 600; }
-        .contact-info a, .contact-info p {
-            color: var(--mambu-text-medium); text-decoration: none; font-weight: 500;
-            font-size: 15px; transition: var(--transition);
-            word-wrap: break-word; /* More robust wrapping */
-            overflow-wrap: break-word;
-            word-break: break-word; /* Ensure breaks happen */
-            margin: 0; line-height: 1.4;
-        }
-        .contact-info a { color: var(--mambu-primary-green); }
-        .contact-info a:hover { color: var(--mambu-dark-green); }
+        .contact-item { display: flex; align-items: center; gap: 18px; padding: 25px; background-color: var(--mambu-background-alt); /* Alt background */ border-radius: var(--border-radius-main); border: 1px solid transparent; /* Transparent border initially */ box-shadow: none; transition: var(--transition); }
+        .contact-item:hover { border-color: var(--mambu-primary-green); background-color: var(--mambu-background-light); box-shadow: var(--shadow-light); transform: translateY(-5px); }
+        .contact-icon { width: 45px; height: 45px; background-color: rgba(58, 183, 104, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .contact-icon i { font-size: 18px; color: var(--mambu-primary-green); }
+        .contact-info { display: flex; flex-direction: column; overflow: hidden; }
+        .contact-info h3 { font-size: 16px; color: var(--mambu-text-dark); margin-bottom: 3px; font-weight: 600; }
+        .contact-info a, .contact-info p { color: var(--mambu-text-medium); text-decoration: none; font-weight: 500; font-size: 15px; transition: var(--transition); word-wrap: break-word; overflow-wrap: break-word; word-break: break-all; /* Ensure breaks happen */ margin: 0; line-height: 1.4; }
+        .contact-info a:hover { color: var(--mambu-primary-green); }
 
         /* --- Footer --- */
-        .footer { padding: 30px 0; background-color: var(--mambu-text-dark); color: rgba(255, 255, 255, 0.7); text-align: center; width: 100%; display: block; margin-top: 0; }
-        .footer-text { opacity: 1; font-size: 14px; }
+        .footer { padding: 35px 0; background-color: var(--mambu-text-dark); color: rgba(255, 255, 255, 0.75); text-align: center; width: 100%; }
+        .footer-text { font-size: 14px; }
 
         /* --- Responsive Styles --- */
         @media (max-width: 992px) {
-            .hero-container { grid-template-columns: 1fr; text-align: center; gap: 50px; }
-            .hero-image { order: -1; max-width: 380px; margin: 0 auto 40px; }
-            .hero-subtitle, .hero-value-prop { margin-left: auto; margin-right: auto; }
-            .section-title { font-size: 32px; }
-            .quote-text { font-size: 22px; padding: 0 30px; }
-            .contact-container { grid-template-columns: 1fr; max-width: 500px; }
+            html { scroll-padding-top: 70px; } /* Adjust scroll padding for smaller header */
+            .header { padding: 15px 0; }
+            .nav-links { gap: 30px; }
+            .hero-container { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .hero-image { order: -1; max-width: 320px; margin: 0 auto 30px; }
+            .hero-content h1 { font-size: 40px; }
+            .hero-subtitle, .hero-value-prop { margin-left: auto; margin-right: auto; max-width: 90%; }
+            .section-title { font-size: 30px; }
+            .quote-text { font-size: 20px; }
+            .cards-grid { grid-template-columns: 1fr; } /* Stack cards */
+            .contact-container { grid-template-columns: 1fr; max-width: 450px; } /* Stack contact items */
+            .experience-card { flex-direction: column; gap: 15px; /* Stack header and details */ }
+            .experience-header { width: 100%; border-right: none; border-bottom: 1px solid var(--mambu-border-light); padding-right: 0; padding-bottom: 15px; margin-bottom: 15px; }
         }
+
         @media (max-width: 768px) {
             .header { padding: 12px 0; }
-            .mobile-toggle { display: block; z-index: 1001; order: 3; }
-            .nav-container .download-btn { display: none; }
-            .nav-links { position: fixed; top: 0; left: -100%; width: 80%; max-width: 300px; height: 100vh; background-color: white; flex-direction: column; align-items: flex-start; padding: 80px 20px 20px; transition: left 0.3s ease-in-out; box-shadow: 0 0 30px rgba(0, 0, 0, 0.1); z-index: 1000; }
+            .mobile-toggle { display: block; order: 3; }
+            .nav-container .download-btn { display: none; } /* Hide button in top bar */
+            .nav-links {
+                position: fixed; top: 0; left: -100%; width: 85%; max-width: 320px; height: 100vh;
+                background-color: white; flex-direction: column; align-items: flex-start;
+                padding: 90px 30px 30px; /* Adjust padding */
+                transition: left 0.35s ease-in-out; /* Smoother transition */
+                box-shadow: 0 0 40px rgba(0, 0, 0, 0.15); z-index: 1000; gap: 0; /* Reset gap */
+            }
             .nav-links.active { left: 0; }
-            .nav-link { margin: 0 0 15px 0; font-size: 18px; width: 100%; padding: 10px 0; color: var(--mambu-text-dark); }
-            .nav-link:hover { color: var(--mambu-primary-green); }
-            .nav-links .download-btn { display: inline-flex; margin: 20px 0 0 0; width: auto; align-self: flex-start; }
-            .close-menu { display: block; position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 24px; color: var(--mambu-text-dark); cursor: pointer; z-index: 1001; }
-            .hero { padding: 140px 0 80px; min-height: auto; }
-            .hero-content h1 { font-size: 40px; } .hero-subtitle { font-size: 18px; }
-            .cards-grid { grid-template-columns: 1fr; }
-            .experience-grid { grid-template-columns: 1fr; }
+            .nav-link { margin: 0 0 18px 0; font-size: 18px; width: 100%; padding: 8px 0; color: var(--mambu-text-dark); font-weight: 500; }
+            .nav-links .download-btn { display: inline-flex; margin: 25px 0 0 0; width: auto; align-self: flex-start; } /* Show button in menu */
+            .close-menu {
+                display: block; position: absolute; top: 20px; right: 25px; background: none; border: none;
+                font-size: 26px; color: var(--mambu-text-dark); cursor: pointer; z-index: 1001;
+            }
+            .hero { padding: 120px 0 60px; }
+            .hero-content h1 { font-size: 36px; }
+            .hero-subtitle { font-size: 17px; }
         }
+
         @media (max-width: 480px) {
-            body { font-size: 16px; }
-            .hero-content h1 { font-size: 34px; } .hero-subtitle { font-size: 17px; }
-            .section-title { font-size: 28px; } .section-subtitle { font-size: 17px; }
-            .quote-text { font-size: 20px; padding: 0 15px; }
-            .contact-item { flex-direction: column; text-align: center; gap: 15px; padding: 25px; }
-            .experience-title { font-size: 18px; } .experience-company { font-size: 15px;}
-            .experience-details, .experience-details li { font-size: 14px;}
+            body { font-size: 15px; line-height: 1.65; }
+            .container { padding: 0 15px; }
+            .hero-content h1 { font-size: 32px; }
+            .hero-subtitle { font-size: 16px; }
+            .hero-image { max-width: 280px; }
+            .section-title { font-size: 26px; }
+            .section-subtitle { font-size: 16px; }
+            .quote-text { font-size: 18px; }
+            .card { padding: 30px 25px; }
+            .card-title { font-size: 19px; }
+            .card-text { font-size: 14px; }
+            .experience-card { padding: 25px; }
+            .experience-title { font-size: 17px; }
+            .experience-company { font-size: 14px; }
+            .experience-details { font-size: 14px; }
+            .experience-details li { padding-left: 20px; margin-bottom: 8px; }
+            .contact-item { padding: 20px; gap: 15px; }
+            .contact-icon { width: 40px; height: 40px; }
+            .contact-icon i { font-size: 16px; }
+            .contact-info h3 { font-size: 15px; }
+            .contact-info a, .contact-info p { font-size: 14px; }
         }
 
         /* --- Animation Classes --- */
-        .fade-in, .slide-in-left, .slide-in-right { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .fade-in { transform: translateY(20px); } .slide-in-left { transform: translateX(-30px); } .slide-in-right { transform: translateX(30px); }
+        .fade-in, .slide-in-left, .slide-in-right { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; will-change: opacity, transform; }
+        .fade-in { transform: translateY(20px); }
+        .slide-in-left { transform: translateX(-30px); }
+        .slide-in-right { transform: translateX(30px); }
         .fade-in.active, .slide-in-left.active, .slide-in-right.active { opacity: 1; transform: translate(0, 0); }
-        .delay-1 { transition-delay: 0.05s !important; } .delay-2 { transition-delay: 0.1s !important; } .delay-3 { transition-delay: 0.15s !important; } .delay-4 { transition-delay: 0.2s !important; }
+        .delay-1 { transition-delay: 0.1s !important; }
+        .delay-2 { transition-delay: 0.2s !important; }
+        .delay-3 { transition-delay: 0.3s !important; }
+        .delay-4 { transition-delay: 0.4s !important; }
 
     </style>
 </head>
@@ -206,16 +232,20 @@
     <header class="header" id="header">
         <div class="container nav-container">
             <a href="#" class="logo">Eric <span>Oberndorfer</span></a>
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
-            <div class="nav-links" id="navLinks">
-                <button class="close-menu" id="closeMenu" aria-label="Close menu"><i class="fas fa-times"></i></button>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <button class="close-menu" id="closeMenu" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
                 <a href="#alignment" class="nav-link">Alignment</a>
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <a href="Eric_Oberndorfer_Resume_2025.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
                     <i class="fas fa-file-pdf"></i> View Resume
                 </a>
-            </div>
+            </nav>
         </div>
     </header>
 
@@ -223,10 +253,9 @@
     <section class="hero" id="about">
         <div class="container hero-container">
             <div class="hero-content fade-in">
-                <h1>Driving <span>Customer Value</span> & Growth with Mambu</h1>
-                <p class="hero-subtitle">Strategic relationship builder focused on empowering clients and fostering long-term success through partnership and expertise.</p>
-                <p class="hero-value-prop">Leveraging 15+ years of experience to ensure Mambu clients achieve maximum value and scale effectively.</p>
-                <!-- Removed redundant hero CTA button -->
+                <h1>Partnering for Success: Driving Client Value with <span>Mambu</span></h1>
+                <p class="hero-subtitle">A strategic and results-oriented client partner, focused on ensuring Mambu customers achieve their goals through proactive engagement and expert guidance.</p>
+                <p class="hero-value-prop">Bringing 15+ years of experience in relationship management, technology implementation, and strategic growth within dynamic SaaS and enterprise environments.</p>
             </div>
             <div class="hero-image slide-in-right">
                  <img src="eric-headshot.jpg" alt="Eric Oberndorfer Professional Headshot" class="profile-img">
@@ -237,10 +266,14 @@
     <!-- Quote Section -->
     <section class="quote-section">
         <div class="container quote-container fade-in">
+            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
             <p class="quote-text">
-                "We are in it for the long run. The pillars of our approach provide personalised and continuous strategic value to help you scale and grow for today and into the future."
+                We are in it for the long run. The pillars of our approach provide personalised and continuous strategic value to help you scale and grow for today and into the future.
             </p>
-            <div class="quote-author">– Semhal Tarekegn OGorman, Chief Customer Success Officer at Mambu</div>
+            <div class="quote-author">
+                Semhal Tarekegn OGorman
+                <span>Chief Customer Success Officer at Mambu</span>
+            </div>
         </div>
     </section>
 
@@ -248,42 +281,47 @@
     <section class="alignment" id="alignment">
         <div class="container">
             <div class="section-header fade-in">
-                <h2 class="section-title">Aligned with Mambu's Approach</h2>
-                <p class="section-subtitle">My experience directly supports the pillars of Mambu's customer success approach: fostering partnerships, delivering strategic value, enabling growth, and ensuring client success through expertise.</p>
+                <h2 class="section-title">My Approach Aligns with Mambu's Success Pillars</h2>
+                <p class="section-subtitle">My background directly supports Mambu's customer-centric philosophy, focusing on building strong partnerships, delivering measurable value, enabling growth, and ensuring client success through proactive expertise.</p>
             </div>
             <div class="cards-grid">
+                <!-- Card 1: Partnership -->
                 <div class="card fade-in delay-1">
-                    <div class="card-icon"><i class="fas fa-heart"></i></div> {/* Icon Added */}
-                    <h3 class="card-title">Customer Obsession & Partnership</h3>
-                    <p class="card-text">Dedicated to delivering exceptional experiences (evidenced by highest dept. satisfaction ratings) and building high-trust, long-term partnerships by actively listening and advocating for client needs across diverse segments (SMB to enterprise).</p>
+                    <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                    <h3 class="card-title">Strategic Partnership & Advocacy</h3>
+                    <p class="card-text">Proven ability to build high-trust, long-term relationships (SMB to enterprise). I focus on deeply understanding client needs and acting as their internal advocate, fostering collaboration to achieve shared goals.</p>
                 </div>
+                <!-- Card 2: Value & Growth -->
                 <div class="card fade-in delay-2">
-                    <div class="card-icon"><i class="fas fa-rocket"></i></div> {/* Icon Added */}
-                    <h3 class="card-title">Delivering Strategic Value & Growth</h3>
-                    <p class="card-text">Track record of exceeding performance targets, directly contributing to client retention and growth across 14 states. Skilled in identifying opportunities and implementing strategies that lead to measurable client value realization.</p>
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="card-title">Value Realization & Growth</h3>
+                    <p class="card-text">Track record of identifying opportunities, revitalizing key accounts, and implementing strategies that lead to measurable client value, retention, and growth (e.g., significant retention improvements across 14 states).</p>
                 </div>
+                <!-- Card 3: Technical Acumen -->
                 <div class="card fade-in delay-3">
-                    <div class="card-icon"><i class="fas fa-sync-alt"></i></div> {/* Icon Added */}
-                    <h3 class="card-title">Enabling Scalability & Adaptability</h3>
-                     <p class="card-text">Experience managing complex client relationships and large-scale initiatives (network expansions, office setups). Proven ability to navigate challenging conditions (COVID) and implement new technologies, supporting client scalability.</p>
+                    <div class="card-icon"><i class="fas fa-cogs"></i></div>
+                    <h3 class="card-title">Technical Acumen & Adoption</h3>
+                     <p class="card-text">Experience implementing innovative technologies (telemetry, cameras, software) and managing complex technical projects (network expansions). Adept at helping clients leverage platform capabilities effectively.</p>
                 </div>
+                <!-- Card 4: Enablement -->
                  <div class="card fade-in delay-4">
-                    <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div> {/* Icon Added */}
-                    <h3 class="card-title">Proactive Expertise & Enablement</h3>
-                     <p class="card-text">Recognized top trainer skilled in developing and delivering impactful programs that drive user adoption. Proactively implement technology and processes, ensuring clients are fully enabled for success on the platform.</p>
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="card-title">Client Enablement & Training</h3>
+                     <p class="card-text">Recognized top trainer skilled in developing and delivering impactful onboarding and training programs (revamped company-wide modules). Committed to empowering users for self-sufficiency and platform mastery.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section - Stacked Cards -->
+    <!-- Experience Section -->
     <section class="experience" id="experience">
         <div class="container">
              <div class="section-header fade-in">
-                <h2 class="section-title">Career Journey & CSM Alignment</h2>
-                <p class="section-subtitle">Key roles highlighting relevant experience in client relationship management, technical implementation, strategic growth, and team leadership aligned with the Customer Success Manager role.</p>
+                <h2 class="section-title">Relevant Career Highlights for CSM</h2>
+                <p class="section-subtitle">Key achievements demonstrating client management, technical project leadership, strategic growth, and enablement skills essential for driving success at Mambu.</p>
             </div>
             <div class="experience-grid">
+                <!-- Experience Card 1 -->
                 <div class="experience-card fade-in">
                     <div class="experience-header">
                         <h3 class="experience-title">Wrangler, Student Services</h3>
@@ -292,13 +330,14 @@
                     </div>
                     <div class="experience-details">
                          <ul>
-                            <li>**Client Satisfaction:** Achieved highest department satisfaction rating through meticulous service orchestration.</li>
-                            <li>**Onboarding & Logistics:** Ensured seamless daily operations & positive feedback via effective student onboarding and coordination.</li>
-                            <li>**Technology Adoption:** Enhanced coaching effectiveness by implementing and managing innovative technologies (360 cameras, telemetry, eye-tracking).</li>
-                            <li>**Specialized Training:** Improved rider safety via strategic contributions to Military Training classes.</li>
+                            <li><strong>Achieved highest department satisfaction rating</strong> through meticulous service orchestration and client focus.</li>
+                            <li>Ensured seamless daily operations & positive feedback via effective student onboarding, logistics management, and inter-departmental coordination.</li>
+                            <li>Enhanced coaching effectiveness and student experience by <strong>implementing innovative technologies</strong> (360 cameras, telemetry, eye-tracking systems).</li>
+                            <li>Improved specialized user safety (Military Training) through strategic program contributions.</li>
                          </ul>
                      </div>
                 </div>
+                <!-- Experience Card 2 -->
                 <div class="experience-card fade-in delay-1">
                      <div class="experience-header">
                         <h3 class="experience-title">Director, Business Development, Team Lead</h3>
@@ -307,14 +346,15 @@
                     </div>
                     <div class="experience-details">
                          <ul>
-                            <li>**Retention & Expansion:** Significantly improved client retention and established top partnerships across 14 states.</li>
-                            <li>**Team Leadership:** Mentored and managed remote sales teams, enhancing productivity and cohesion.</li>
-                            <li>**Strategic Partnerships:** Built lasting revenue streams through strategic MSP relationships (as BDM).</li>
-                            <li>**Client Enablement:** Authored revamped training modules ("Written Communication," "On The Meeting"), recognized as top trainer driving user understanding.</li>
-                            <li>**Cross-Functional Leadership:** Partnered with CHRO to establish and manage new regional office operations.</li>
+                            <li>Led strategic initiatives resulting in <strong>significantly improved client retention</strong> and established top-performing partnerships across 14 states.</li>
+                            <li>Managed and mentored geographically dispersed teams, enhancing productivity and team cohesion.</li>
+                            <li>Built lasting revenue streams and drove significant business growth through <strong>strategic MSP relationships</strong> (as BDM).</li>
+                            <li>Authored entirely revamped company-wide training modules, achieving consistent recognition as <strong>top trainer</strong>, fostering user adoption and skill development.</li>
+                            <li>Spearheaded the establishment and management of a new regional office, coordinating facilities, design, and operations.</li>
                         </ul>
                     </div>
                 </div>
+                <!-- Experience Card 3 -->
                 <div class="experience-card fade-in delay-2">
                      <div class="experience-header">
                         <h3 class="experience-title">Client Relations Manager</h3>
@@ -323,11 +363,12 @@
                      </div>
                      <div class="experience-details">
                         <ul>
-                            <li>**Enterprise Account Management:** Managed full lifecycle for large tech staffing clients, ensuring smooth onboarding and long-term relationship maintenance critical for retention.</li>
-                            <li>**Resilience & Problem Solving:** Successfully navigated COVID-19 pandemic challenges, maintaining consistent client growth.</li>
+                            <li>Managed full sales and relationship lifecycle for large enterprise technology clients, ensuring successful onboarding and <strong>long-term account health</strong> critical for retention.</li>
+                            <li>Successfully <strong>navigated challenging business landscape</strong> during COVID-19, maintaining consistent client growth and demonstrating resilience.</li>
                         </ul>
                      </div>
                 </div>
+                <!-- Experience Card 4 -->
                 <div class="experience-card fade-in delay-3">
                     <div class="experience-header">
                         <h3 class="experience-title">Account Executive</h3>
@@ -336,11 +377,12 @@
                      </div>
                      <div class="experience-details">
                         <ul>
-                            <li>**Account Growth (SMB/Enterprise):** Transitioned from SMB to spearheading major network expansions, securing substantial commitments.</li>
-                            <li>**Internal Advocacy/Communication:** Enhanced employee engagement by creating and hosting an internal leadership podcast.</li>
+                            <li>Spearheaded major network expansion projects by transitioning from SMB management, securing substantial revenue commitments required for <strong>large-scale infrastructure construction</strong>.</li>
+                            <li>Enhanced internal communication and employee engagement by creating, hosting, and producing an internal leadership podcast series.</li>
                         </ul>
                     </div>
                 </div>
+                <!-- Experience Card 5 -->
                  <div class="experience-card fade-in delay-4">
                      <div class="experience-header">
                         <h3 class="experience-title">Retail Sales Consultant</h3>
@@ -349,8 +391,8 @@
                     </div>
                     <div class="experience-details">
                         <ul>
-                            <li>**Customer Service Excellence:** Consistently recognized as a top performer delivering exceptional consumer sales/service.</li>
-                            <li>**Technology Piloting:** Chosen for "Store of the Future" initiative, demonstrating adaptability by piloting innovative sales technologies and processes.</li>
+                            <li>Consistently recognized as a top performer delivering exceptional customer service and achieving sales targets in a flagship retail location.</li>
+                            <li>Demonstrated adaptability and early adoption by participating in the elite "Store of the Future" initiative, <strong>piloting innovative sales technologies</strong> and processes.</li>
                          </ul>
                      </div>
                  </div>
@@ -362,32 +404,34 @@
     <section class="contact" id="contact">
          <div class="container">
             <div class="section-header fade-in">
-                <h2 class="section-title">Contact Information</h2> <!-- Updated Header -->
-                <p class="section-subtitle">Let's connect. Reach out via email, phone, or LinkedIn.</p> <!-- Updated Subtitle -->
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">I'm excited about the opportunity at Mambu. Please feel free to reach out.</p>
              </div>
             <div class="contact-container">
+                <!-- Email -->
                 <div class="contact-item fade-in delay-1">
-                    <div class="contact-icon"><i class="fas fa-envelope"></i></div> {/* Icon Added */}
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                     <div class="contact-info">
                         <h3>Email</h3>
                         <a href="mailto:E.Obern@gmail.com">E.Obern@gmail.com</a>
                     </div>
                 </div>
+                <!-- Phone -->
                 <div class="contact-item fade-in delay-2">
-                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div> {/* Icon Added */}
+                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
                      <div class="contact-info">
                         <h3>Phone</h3>
                         <a href="tel:619-733-5323">619-733-5323</a>
                     </div>
                 </div>
+                <!-- LinkedIn -->
                 <div class="contact-item fade-in delay-3">
-                     <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div> {/* Icon Added */}
+                     <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
                     <div class="contact-info">
                          <h3>LinkedIn</h3>
                          <a href="https://linkedin.com/in/ericoberndorfer" target="_blank" rel="noopener noreferrer">linkedin.com/in/ericoberndorfer</a>
                      </div>
                 </div>
-                 <!-- Location Card Removed -->
             </div>
         </div>
     </section>
@@ -401,24 +445,89 @@
 
     <!-- JavaScript for Interactivity -->
     <script>
-        const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-        const observerCallback = (entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); };
-        const animationObserver = new IntersectionObserver(observerCallback, observerOptions);
-        animatedElements.forEach(el => { animationObserver.observe(el); });
-        const mobileToggle = document.getElementById('mobileToggle');
-        const closeMenu = document.getElementById('closeMenu');
-        const navLinks = document.getElementById('navLinks');
-        const navLinkItems = document.querySelectorAll('#navLinks .nav-link');
-        const downloadBtnMobile = document.querySelector('#navLinks .download-btn');
-        if (mobileToggle && navLinks && closeMenu) {
-            mobileToggle.addEventListener('click', () => { navLinks.classList.add('active'); });
-            closeMenu.addEventListener('click', () => { navLinks.classList.remove('active'); });
-            navLinkItems.forEach(link => { link.addEventListener('click', () => { if (navLinks.classList.contains('active')) { navLinks.classList.remove('active'); } }); });
-            if(downloadBtnMobile) { downloadBtnMobile.addEventListener('click', () => { if (navLinks.classList.contains('active')) { navLinks.classList.remove('active'); } }); }
-            document.addEventListener('click', (event) => { const isClickInsideNav = navLinks.contains(event.target); const isClickOnToggle = mobileToggle.contains(event.target); if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) { navLinks.classList.remove('active'); } });
-        }
-        console.log("Site interactivity loaded.");
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Animation Observer ---
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+            if ("IntersectionObserver" in window) {
+                const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+                const observerCallback = (entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            // Optional: stop observing once animated
+                            // observer.unobserve(entry.target);
+                        }
+                    });
+                };
+                const animationObserver = new IntersectionObserver(observerCallback, observerOptions);
+                animatedElements.forEach(el => { animationObserver.observe(el); });
+            } else {
+                // Fallback for older browsers: just show elements
+                animatedElements.forEach(el => el.classList.add('active'));
+            }
+
+            // --- Mobile Menu ---
+            const mobileToggle = document.getElementById('mobileToggle');
+            const closeMenu = document.getElementById('closeMenu');
+            const navLinks = document.getElementById('navLinks');
+            const navLinkItems = document.querySelectorAll('#navLinks .nav-link'); // Select only links inside navLinks
+            const downloadBtnMobile = document.querySelector('#navLinks .download-btn'); // Select button inside navLinks
+
+            const closeMobileMenu = () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore body scroll
+                }
+            };
+
+            if (mobileToggle && navLinks && closeMenu) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent triggering document click listener
+                    navLinks.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent body scroll when menu is open
+                });
+
+                closeMenu.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeMobileMenu();
+                });
+
+                // Close menu when a link is clicked
+                navLinkItems.forEach(link => {
+                    link.addEventListener('click', closeMobileMenu);
+                });
+
+                // Close menu when the download button (inside the mobile menu) is clicked
+                if (downloadBtnMobile) {
+                    downloadBtnMobile.addEventListener('click', closeMobileMenu);
+                }
+
+                // Close menu if clicking outside of it
+                document.addEventListener('click', (event) => {
+                    const isClickInsideNav = navLinks.contains(event.target);
+                    const isClickOnToggle = mobileToggle.contains(event.target);
+                    if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
+                        closeMobileMenu();
+                    }
+                });
+            }
+
+            // --- Optional: Header Shrink on Scroll ---
+            const header = document.getElementById('header');
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        header.style.padding = '12px 0'; // Adjust shrink padding
+                        header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
+                    } else {
+                        header.style.padding = '18px 0'; // Restore original padding
+                        header.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.05)';
+                    }
+                });
+            }
+
+            console.log("Site interactivity loaded.");
+        });
     </script>
 </body>
 </html>
