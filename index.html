@@ -55,7 +55,7 @@
             vertical-align: middle;
             width: 1em; /* Default size, can be overridden */
             height: 1em;
-            fill: currentColor; /* Default fill behavior */
+            fill: currentColor; /* Default fill behavior for solid/glyph icons */
         }
 
 
@@ -87,7 +87,7 @@
         .download-btn:hover { background: var(--mambu-dark-green); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(58, 183, 104, 0.25); }
         .mobile-toggle { display: none; background: none; border: none; color: var(--mambu-text-dark); font-size: 24px; cursor: pointer; z-index: 1001; }
         /* Hamburger/Close Icon SVG Style */
-        .mobile-toggle svg, .close-menu svg { width: 24px; height: 24px; stroke: currentColor; fill: none; /* For outline icons */ stroke-width: 2; }
+        .mobile-toggle svg, .close-menu svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
         .close-menu { display: none; }
 
 
@@ -131,12 +131,11 @@
              border-radius: 50%; display: flex; align-items: center; justify-content: center;
              margin-bottom: 20px; flex-shrink: 0; color: var(--mambu-primary-green); /* Icon color */
         }
-        /* Styling for outline SVG icons */
+        /* Styling for SOLID SVG icons */
         .card-icon svg {
-            width: 24px; height: 24px; /* Adjusted size */
-            stroke: currentColor; /* Use stroke for outline icons */
-            stroke-width: 1.5; /* Adjust stroke width as needed */
-            fill: none; /* No fill for outline icons */
+            width: 22px; height: 22px; /* Adjust size as needed */
+            fill: currentColor; /* Ensure fill color is applied */
+            stroke: none; /* No stroke for solid icons */
         }
         .card-text { color: var(--mambu-text-medium); font-size: 15px; flex-grow: 1; margin-bottom: 0; }
 
@@ -185,15 +184,15 @@
              border-radius: 50%; display: flex; align-items: center; justify-content: center;
              flex-shrink: 0; color: var(--mambu-primary-green); /* Icon color */
         }
-        /* Styling for outline SVG icons in contact */
+        /* Styling for SOLID SVG icons in contact */
         .contact-icon svg {
-            width: 24px; height: 24px; /* Adjusted size */
-            stroke: currentColor; stroke-width: 1.5; fill: none;
+            width: 22px; height: 22px; /* Adjusted size */
+            fill: currentColor; /* Ensure fill */
+            stroke: none; /* No stroke */
         }
-        /* Specific style for LinkedIn logo (filled) */
+        /* Specific style for LinkedIn logo (already filled) */
         .contact-icon svg.linkedin-svg {
              width: 20px; height: 20px; /* Adjusted size */
-             fill: currentColor; stroke: none; /* Override outline style */
         }
         .contact-info { display: flex; flex-direction: column; overflow: hidden; min-width: 0; /* Helps prevent flex overflow */ }
         .contact-info h3 { font-size: 16px; margin-bottom: 3px; }
@@ -260,7 +259,7 @@
             .quote-section { padding: 60px 0; }
             .quote-text { font-size: 18px; }
             .card { padding: 30px 25px; }
-            .card-icon svg { width: 22px; height: 22px; } /* Adjust icon size */
+            .card-icon svg { width: 20px; height: 20px; } /* Adjust icon size */
             .card-text { font-size: 14px; }
             .experience-card { padding: 25px; }
             .experience-title { font-size: 17px; }
@@ -268,7 +267,7 @@
             .experience-details li, .experience-details p { font-size: 14px; }
             .contact-item { padding: 20px; gap: 15px; }
             .contact-icon { width: 40px; height: 40px; }
-            .contact-icon svg { width: 22px; height: 22px; } /* Adjust icon size */
+            .contact-icon svg { width: 20px; height: 20px; } /* Adjust icon size */
             .contact-icon svg.linkedin-svg { width: 18px; height: 18px; } /* Adjust linkedin icon size */
             .contact-info h3 { font-size: 15px; }
             .contact-info a, .contact-info p { font-size: 14px; }
@@ -355,8 +354,8 @@
                 <!-- Card 1: Partnership -->
                 <div class="card fade-in delay-1">
                     <div class="card-icon">
-                         <!-- NEW: Users Icon (Outline) -->
-                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" /> </svg>
+                         <!-- NEW: Users Icon (Solid Glyph) -->
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"> <path d="M10 9a3 3 0 100-6 3 3 0 000 6zM6 8a2 2 0 11-4 0 2 2 0 014 0zM1.49 15.326a.78.78 0 01-.358-.442 3 3 0 014.308-3.516 6.484 6.484 0 00-1.905 3.959c-.023.222-.014.442.025.654a4.97 4.97 0 01-2.07-.655zM16.44 15.98a4.97 4.97 0 002.07-.654.78.78 0 00.357-.442 3 3 0 00-4.308-3.517 6.484 6.484 0 011.907 3.96 2.074 2.074 0 01-.025.654zM18 8a2 2 0 11-4 0 2 2 0 014 0zM5.304 16.19a.844.844 0 01-.277-.71 5 5 0 019.947 0 .843.843 0 01-.277.71A6.975 6.975 0 0110 18a6.974 6.974 0 01-4.696-1.81z" /> </svg>
                     </div>
                     <h3 class="card-title">Strategic Partnership & Advocacy</h3>
                     <p class="card-text">Proven ability to build high-trust, long-term relationships (SMB to enterprise). I focus on deeply understanding client needs and acting as their internal advocate, fostering collaboration to achieve shared goals.</p>
@@ -364,8 +363,8 @@
                 <!-- Card 2: Value & Growth -->
                 <div class="card fade-in delay-2">
                     <div class="card-icon">
-                         <!-- NEW: Arrow Trending Up Icon (Outline) -->
-                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /> </svg>
+                         <!-- NEW: Chart Bar Increasing (Solid Glyph) -->
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M15.5 2.75a.75.75 0 01.75.75v13a.75.75 0 01-1.5 0V6.56l-4.22 4.22a.75.75 0 01-1.06 0l-1.97-1.97a.75.75 0 010-1.06l3.5-3.5a.75.75 0 011.06 0l2.47 2.47V3.5a.75.75 0 01.75-.75zM4.5 17.25a.75.75 0 01-.75-.75V3.5a.75.75 0 011.5 0v13a.75.75 0 01-.75.75z" clip-rule="evenodd" /> </svg>
                     </div>
                     <h3 class="card-title">Value Realization & Growth</h3>
                     <p class="card-text">Track record of identifying opportunities, revitalizing key accounts, and implementing strategies that lead to measurable client value, retention, and growth (e.g., significant retention improvements across 14 states).</p>
@@ -373,8 +372,8 @@
                 <!-- Card 3: Technical Acumen -->
                 <div class="card fade-in delay-3">
                     <div class="card-icon">
-                        <!-- NEW: Wrench/Adjustments Icon (Outline) -->
-                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.471-2.471a1.875 1.875 0 00-2.652-2.652L6.232 14.043a1.875 1.875 0 00-2.652 2.652l2.471 2.471M11.42 15.17l-2.47-2.47m2.47 2.47l-.571-.571M11.42 15.17l.571.571m0 0l2.47 2.47m-2.47-2.47l-5.877-5.877m5.877 5.877l-2.47-2.47m2.47 2.47l2.47-2.47M12 8.25l-1.5 1.5m1.5-1.5l1.5 1.5m-1.5-1.5V3.75m1.5 1.5l1.5-1.5m-1.5 1.5l-1.5-1.5M6.75 12l-1.5 1.5m1.5-1.5l1.5 1.5m-1.5-1.5V6.75m1.5 1.5l1.5-1.5m-1.5 1.5l-1.5-1.5M17.25 12l-1.5 1.5m1.5-1.5l1.5 1.5m-1.5-1.5V6.75m1.5 1.5l1.5-1.5m-1.5 1.5l-1.5-1.5" /> </svg>
+                        <!-- NEW: Code Brackets Icon (Solid Glyph) -->
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M6.28 5.22a.75.75 0 010 1.06L3.56 9h12.88l-2.72-2.72a.75.75 0 011.06-1.06L17.47 8.47a.75.75 0 010 1.06l-2.72 2.72a.75.75 0 01-1.06-1.06L16.44 11H3.56l2.72 2.72a.75.75 0 11-1.06 1.06L2.53 11.53a.75.75 0 010-1.06l2.72-2.72a.75.75 0 011.03 0z" clip-rule="evenodd" /> </svg>
                     </div>
                     <h3 class="card-title">Technical Acumen & Adoption</h3>
                      <p class="card-text">Experience implementing innovative technologies (telemetry, cameras, software) and managing complex technical projects (network expansions). Adept at helping clients leverage platform capabilities effectively.</p>
@@ -382,8 +381,8 @@
                 <!-- Card 4: Enablement -->
                  <div class="card fade-in delay-4">
                     <div class="card-icon">
-                         <!-- NEW: Presentation Chart/Board Icon (Outline) -->
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 1.5m-5-1.5l1-1.5m9-1.5l-1 1.5M9 16.5v1.5m0-1.5h-1.5m1.5 0h1.5m-1.5 0l1-1.5M6 16.5v1.5m0-1.5H4.5m1.5 0h1.5m-1.5 0l1-1.5m6 .097V18m0-1.403L12 15m-1.5 1.5l-1-1.5m3 .097V18m0-1.403l-1.5 1.5M15 16.5v1.5m0-1.5h-1.5m1.5 0h1.5m-1.5 0l1-1.5" /> </svg>
+                         <!-- NEW: Graduation Cap Icon (Solid Glyph) -->
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"> <path d="M10.362 2.219a1.25 1.25 0 00-1.224 0L1.998 5.83a1.25 1.25 0 00-.748 1.147V11a.75.75 0 001.5 0V7.26l7-3.112 7 3.112V11a.75.75 0 001.5 0V6.977a1.25 1.25 0 00-.748-1.147L10.362 2.219z" /> <path fill-rule="evenodd" d="M3 2.75A.75.75 0 013.75 2h12a.75.75 0 010 1.5h-12A.75.75 0 013 2.75zm-1.5 6.5a.75.75 0 01.75-.75h15.5a.75.75 0 010 1.5H2.25a.75.75 0 01-.75-.75zM2.25 13a.75.75 0 000 1.5h.041a3.001 3.001 0 005.918 0h5.582a3.001 3.001 0 005.918 0H19.5a.75.75 0 000-1.5H2.25z" clip-rule="evenodd" /> </svg>
                     </div>
                     <h3 class="card-title">Client Enablement & Training</h3>
                      <p class="card-text">Recognized top trainer skilled in developing and delivering impactful onboarding and training programs (revamped company-wide modules). Committed to empowering users for self-sufficiency and platform mastery.</p>
@@ -400,8 +399,8 @@
                 <p class="section-subtitle">Key achievements demonstrating client management, technical project leadership, strategic growth, and enablement skills essential for driving success at Mambu.</p>
             </div>
             <div class="experience-grid">
-                <!-- Experience Card 1 -->
-                <div class="experience-card fade-in">
+                <!-- Experience Cards remain the same -->
+                 <div class="experience-card fade-in">
                     <div class="experience-header">
                         <h3 class="experience-title">Wrangler, Student Services</h3>
                         <div class="experience-company">California Superbike School</div>
@@ -416,7 +415,6 @@
                          </ul>
                      </div>
                 </div>
-                <!-- Experience Card 2 -->
                 <div class="experience-card fade-in delay-1">
                      <div class="experience-header">
                         <h3 class="experience-title">Director, Business Development, Team Lead</h3>
@@ -433,7 +431,6 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Experience Card 3 -->
                 <div class="experience-card fade-in delay-2">
                      <div class="experience-header">
                         <h3 class="experience-title">Client Relations Manager</h3>
@@ -447,7 +444,6 @@
                         </ul>
                      </div>
                 </div>
-                <!-- Experience Card 4 -->
                 <div class="experience-card fade-in delay-3">
                     <div class="experience-header">
                         <h3 class="experience-title">Account Executive</h3>
@@ -461,7 +457,6 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Experience Card 5 -->
                  <div class="experience-card fade-in delay-4">
                      <div class="experience-header">
                         <h3 class="experience-title">Retail Sales Consultant</h3>
@@ -475,7 +470,7 @@
                          </ul>
                      </div>
                  </div>
-             </div>
+            </div>
         </div>
     </section>
 
@@ -491,8 +486,8 @@
                 <!-- Email -->
                 <div class="contact-item fade-in delay-1">
                     <div class="contact-icon">
-                        <!-- Envelope SVG (Outline) -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /> </svg>
+                        <!-- Envelope SVG (Solid) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"> <path d="M2.003 5.884L10 11.884l7.997-6M2.003 4A2 2 0 000 6v8a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2H2.003z" /> </svg>
                     </div>
                     <div class="contact-info">
                         <h3>Email</h3>
@@ -502,8 +497,8 @@
                 <!-- Phone -->
                 <div class="contact-item fade-in delay-2">
                     <div class="contact-icon">
-                        <!-- Phone SVG (Outline) -->
-                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /> </svg>
+                        <!-- Phone SVG (Solid) -->
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5h-1.55a16.036 16.036 0 01-15.193-15.193A1.5 1.5 0 013.5 2H5.95z" clip-rule="evenodd" /> </svg>
                     </div>
                      <div class="contact-info">
                         <h3>Phone</h3>
