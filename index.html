@@ -55,7 +55,7 @@
             vertical-align: middle;
             width: 1em; /* Default size, can be overridden */
             height: 1em;
-            fill: currentColor; /* Default fill behavior for solid/glyph icons */
+            fill: currentColor; /* Default fill behavior */
         }
 
 
@@ -87,7 +87,7 @@
         .download-btn:hover { background: var(--mambu-dark-green); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(58, 183, 104, 0.25); }
         .mobile-toggle { display: none; background: none; border: none; color: var(--mambu-text-dark); font-size: 24px; cursor: pointer; z-index: 1001; }
         /* Hamburger/Close Icon SVG Style */
-        .mobile-toggle svg, .close-menu svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
+        .mobile-toggle svg, .close-menu svg { width: 24px; height: 24px; stroke: currentColor; fill: none; /* For outline icons */ stroke-width: 2; }
         .close-menu { display: none; }
 
 
@@ -126,17 +126,8 @@
             display: flex; flex-direction: column; box-shadow: var(--shadow-light);
         }
         .card:hover { transform: translateY(-5px); border-color: rgba(58, 183, 104, 0.5); /* Softer green border */ box-shadow: var(--shadow-medium); }
-        .card-icon {
-             width: 45px; height: 45px; background-color: rgba(58, 183, 104, 0.1);
-             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-             margin-bottom: 20px; flex-shrink: 0; color: var(--mambu-primary-green); /* Icon color */
-        }
-        /* Styling for SOLID SVG icons */
-        .card-icon svg {
-            width: 22px; height: 22px; /* Adjust size as needed */
-            fill: currentColor; /* Ensure fill color is applied */
-            stroke: none; /* No stroke for solid icons */
-        }
+        /* .card-icon removed */
+        .card-title { margin-bottom: 15px; /* Adjusted margin */ }
         .card-text { color: var(--mambu-text-medium); font-size: 15px; flex-grow: 1; margin-bottom: 0; }
 
         /* --- Experience Section --- */
@@ -174,36 +165,31 @@
             gap: 25px; margin-top: 60px; max-width: 1000px; margin-left: auto; margin-right: auto;
         }
         .contact-item {
-            display: flex; align-items: center; gap: 18px; padding: 25px;
+            display: flex; /* Changed from flex to block */
+            align-items: center; /* Removed alignment */
+            gap: 0; /* Reset gap */
+            padding: 25px; /* Kept padding */
             background-color: var(--mambu-background-alt); border-radius: var(--border-radius-main);
             border: 1px solid transparent; box-shadow: none; transition: var(--transition);
+            text-align: center; /* Center text now */
         }
         .contact-item:hover { border-color: rgba(58, 183, 104, 0.5); background-color: var(--mambu-background-light); box-shadow: var(--shadow-light); transform: translateY(-5px); }
-        .contact-icon {
-             width: 45px; height: 45px; background-color: rgba(58, 183, 104, 0.1);
-             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-             flex-shrink: 0; color: var(--mambu-primary-green); /* Icon color */
+        /* .contact-icon removed */
+        .contact-info {
+             /* Removed flex direction */
+             width: 100%; /* Take full width */
+             text-align: center; /* Center text */
         }
-        /* Styling for SOLID SVG icons in contact */
-        .contact-icon svg {
-            width: 22px; height: 22px; /* Adjusted size */
-            fill: currentColor; /* Ensure fill */
-            stroke: none; /* No stroke */
-        }
-        /* Specific style for LinkedIn logo (already filled) */
-        .contact-icon svg.linkedin-svg {
-             width: 20px; height: 20px; /* Adjusted size */
-        }
-        .contact-info { display: flex; flex-direction: column; overflow: hidden; min-width: 0; /* Helps prevent flex overflow */ }
-        .contact-info h3 { font-size: 16px; margin-bottom: 3px; }
+        .contact-info h3 { font-size: 16px; margin-bottom: 5px; /* Increased margin slightly */ }
         .contact-info a {
             color: var(--mambu-primary-green); text-decoration: none; font-weight: 500; font-size: 15px;
-            line-height: 1.4; word-break: break-word; overflow-wrap: break-word; display: inline-block;
+            line-height: 1.4; word-break: break-word; overflow-wrap: break-word; display: block; /* Made block for centering */
         }
         .contact-info a:hover { color: var(--mambu-dark-green); }
         .contact-info p { /* If you had non-link text */
              color: var(--mambu-text-medium); font-weight: 500; font-size: 15px; line-height: 1.4; margin: 0;
         }
+
 
         /* --- Footer --- */
         .footer { padding: 35px 0; background-color: var(--mambu-text-dark); color: rgba(255, 255, 255, 0.75); text-align: center; width: 100%; }
@@ -259,16 +245,14 @@
             .quote-section { padding: 60px 0; }
             .quote-text { font-size: 18px; }
             .card { padding: 30px 25px; }
-            .card-icon svg { width: 20px; height: 20px; } /* Adjust icon size */
+            .card-title { font-size: 19px; }
             .card-text { font-size: 14px; }
             .experience-card { padding: 25px; }
             .experience-title { font-size: 17px; }
             .experience-company, .experience-date { font-size: 14px; }
             .experience-details li, .experience-details p { font-size: 14px; }
-            .contact-item { padding: 20px; gap: 15px; }
-            .contact-icon { width: 40px; height: 40px; }
-            .contact-icon svg { width: 20px; height: 20px; } /* Adjust icon size */
-            .contact-icon svg.linkedin-svg { width: 18px; height: 18px; } /* Adjust linkedin icon size */
+            .contact-item { padding: 20px; }
+             /* Removed contact-icon specific style */
             .contact-info h3 { font-size: 15px; }
             .contact-info a, .contact-info p { font-size: 14px; }
         }
@@ -343,7 +327,7 @@
         </div>
     </section>
 
-    <!-- Alignment Section -->
+    <!-- Alignment Section - ICONS REMOVED -->
     <section class="alignment" id="alignment">
         <div class="container">
             <div class="section-header fade-in">
@@ -353,37 +337,25 @@
             <div class="cards-grid">
                 <!-- Card 1: Partnership -->
                 <div class="card fade-in delay-1">
-                    <div class="card-icon">
-                         <!-- NEW: Users Icon (Solid Glyph) -->
-                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"> <path d="M10 9a3 3 0 100-6 3 3 0 000 6zM6 8a2 2 0 11-4 0 2 2 0 014 0zM1.49 15.326a.78.78 0 01-.358-.442 3 3 0 014.308-3.516 6.484 6.484 0 00-1.905 3.959c-.023.222-.014.442.025.654a4.97 4.97 0 01-2.07-.655zM16.44 15.98a4.97 4.97 0 002.07-.654.78.78 0 00.357-.442 3 3 0 00-4.308-3.517 6.484 6.484 0 011.907 3.96 2.074 2.074 0 01-.025.654zM18 8a2 2 0 11-4 0 2 2 0 014 0zM5.304 16.19a.844.844 0 01-.277-.71 5 5 0 019.947 0 .843.843 0 01-.277.71A6.975 6.975 0 0110 18a6.974 6.974 0 01-4.696-1.81z" /> </svg>
-                    </div>
+                     <!-- Icon Removed -->
                     <h3 class="card-title">Strategic Partnership & Advocacy</h3>
                     <p class="card-text">Proven ability to build high-trust, long-term relationships (SMB to enterprise). I focus on deeply understanding client needs and acting as their internal advocate, fostering collaboration to achieve shared goals.</p>
                 </div>
                 <!-- Card 2: Value & Growth -->
                 <div class="card fade-in delay-2">
-                    <div class="card-icon">
-                         <!-- NEW: Chart Bar Increasing (Solid Glyph) -->
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M15.5 2.75a.75.75 0 01.75.75v13a.75.75 0 01-1.5 0V6.56l-4.22 4.22a.75.75 0 01-1.06 0l-1.97-1.97a.75.75 0 010-1.06l3.5-3.5a.75.75 0 011.06 0l2.47 2.47V3.5a.75.75 0 01.75-.75zM4.5 17.25a.75.75 0 01-.75-.75V3.5a.75.75 0 011.5 0v13a.75.75 0 01-.75.75z" clip-rule="evenodd" /> </svg>
-                    </div>
+                     <!-- Icon Removed -->
                     <h3 class="card-title">Value Realization & Growth</h3>
                     <p class="card-text">Track record of identifying opportunities, revitalizing key accounts, and implementing strategies that lead to measurable client value, retention, and growth (e.g., significant retention improvements across 14 states).</p>
                 </div>
                 <!-- Card 3: Technical Acumen -->
                 <div class="card fade-in delay-3">
-                    <div class="card-icon">
-                        <!-- NEW: Code Brackets Icon (Solid Glyph) -->
-                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M6.28 5.22a.75.75 0 010 1.06L3.56 9h12.88l-2.72-2.72a.75.75 0 011.06-1.06L17.47 8.47a.75.75 0 010 1.06l-2.72 2.72a.75.75 0 01-1.06-1.06L16.44 11H3.56l2.72 2.72a.75.75 0 11-1.06 1.06L2.53 11.53a.75.75 0 010-1.06l2.72-2.72a.75.75 0 011.03 0z" clip-rule="evenodd" /> </svg>
-                    </div>
+                    <!-- Icon Removed -->
                     <h3 class="card-title">Technical Acumen & Adoption</h3>
                      <p class="card-text">Experience implementing innovative technologies (telemetry, cameras, software) and managing complex technical projects (network expansions). Adept at helping clients leverage platform capabilities effectively.</p>
                 </div>
                 <!-- Card 4: Enablement -->
                  <div class="card fade-in delay-4">
-                    <div class="card-icon">
-                         <!-- NEW: Graduation Cap Icon (Solid Glyph) -->
-                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"> <path d="M10.362 2.219a1.25 1.25 0 00-1.224 0L1.998 5.83a1.25 1.25 0 00-.748 1.147V11a.75.75 0 001.5 0V7.26l7-3.112 7 3.112V11a.75.75 0 001.5 0V6.977a1.25 1.25 0 00-.748-1.147L10.362 2.219z" /> <path fill-rule="evenodd" d="M3 2.75A.75.75 0 013.75 2h12a.75.75 0 010 1.5h-12A.75.75 0 013 2.75zm-1.5 6.5a.75.75 0 01.75-.75h15.5a.75.75 0 010 1.5H2.25a.75.75 0 01-.75-.75zM2.25 13a.75.75 0 000 1.5h.041a3.001 3.001 0 005.918 0h5.582a3.001 3.001 0 005.918 0H19.5a.75.75 0 000-1.5H2.25z" clip-rule="evenodd" /> </svg>
-                    </div>
+                     <!-- Icon Removed -->
                     <h3 class="card-title">Client Enablement & Training</h3>
                      <p class="card-text">Recognized top trainer skilled in developing and delivering impactful onboarding and training programs (revamped company-wide modules). Committed to empowering users for self-sufficiency and platform mastery.</p>
                 </div>
@@ -474,7 +446,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section - ICONS REMOVED -->
     <section class="contact" id="contact">
          <div class="container">
             <div class="section-header fade-in">
@@ -485,10 +457,7 @@
             <div class="contact-container">
                 <!-- Email -->
                 <div class="contact-item fade-in delay-1">
-                    <div class="contact-icon">
-                        <!-- Envelope SVG (Solid) -->
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"> <path d="M2.003 5.884L10 11.884l7.997-6M2.003 4A2 2 0 000 6v8a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2H2.003z" /> </svg>
-                    </div>
+                     <!-- Icon Removed -->
                     <div class="contact-info">
                         <h3>Email</h3>
                         <a href="mailto:E.Obern@gmail.com">E.Obern@gmail.com</a>
@@ -496,10 +465,7 @@
                 </div>
                 <!-- Phone -->
                 <div class="contact-item fade-in delay-2">
-                    <div class="contact-icon">
-                        <!-- Phone SVG (Solid) -->
-                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5h-1.55a16.036 16.036 0 01-15.193-15.193A1.5 1.5 0 013.5 2H5.95z" clip-rule="evenodd" /> </svg>
-                    </div>
+                    <!-- Icon Removed -->
                      <div class="contact-info">
                         <h3>Phone</h3>
                         <a href="tel:619-733-5323">619-733-5323</a>
@@ -507,10 +473,7 @@
                 </div>
                 <!-- LinkedIn -->
                 <div class="contact-item fade-in delay-3">
-                     <div class="contact-icon">
-                         <!-- LinkedIn SVG (Filled - Brand logos often look better filled) -->
-                         <svg class="linkedin-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"> <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/> </svg>
-                     </div>
+                     <!-- Icon Removed -->
                     <div class="contact-info">
                          <h3>LinkedIn</h3>
                          <a href="https://linkedin.com/in/ericoberndorfer" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
