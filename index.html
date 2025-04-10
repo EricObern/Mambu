@@ -7,12 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!--
-        IMPORTANT: Double-check this Font Awesome Kit URL.
-        Make sure this kit is active and configured for your domain (e.g., ericobern.github.io)
-        in your Font Awesome account settings.
-    -->
-    <script src="https://kit.fontawesome.com/3010d94d2f.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome script removed - Using Inline SVGs now -->
     <style>
         :root {
             --mambu-primary-green: #3AB768;
@@ -55,6 +50,16 @@
         a:hover { color: var(--mambu-dark-green); }
         section { padding: 100px 0; width: 100%; } /* Standard section padding */
 
+        /* Basic SVG reset */
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+            width: 1em; /* Default size, can be overridden */
+            height: 1em;
+            fill: currentColor; /* Default fill behavior */
+        }
+
+
         /* --- Header Styles --- */
         .header {
             position: fixed; top: 0; left: 0; right: 0;
@@ -76,11 +81,16 @@
             border-radius: var(--border-radius-main); text-decoration: none; font-weight: 600; font-size: 15px;
             transition: var(--transition); border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(58, 183, 104, 0.15);
         }
-        .download-btn i { font-size: 14px; margin-right: 4px; display: inline-block; /* Helps rendering */ vertical-align: middle; }
+        /* PDF Icon SVG Style */
+        .download-btn svg {
+             width: 14px; height: 14px; margin-right: 4px; fill: var(--mambu-text-light);
+        }
         .download-btn:hover { background: var(--mambu-dark-green); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(58, 183, 104, 0.25); }
         .mobile-toggle { display: none; background: none; border: none; color: var(--mambu-text-dark); font-size: 24px; cursor: pointer; z-index: 1001; }
-        .mobile-toggle i, .close-menu i { display: inline-block; /* Helps rendering */ }
+        /* Hamburger/Close Icon SVG Style */
+        .mobile-toggle svg, .close-menu svg { width: 24px; height: 24px; fill: var(--mambu-text-dark); }
         .close-menu { display: none; }
+
 
         /* --- Hero Section --- */
         .hero {
@@ -98,8 +108,8 @@
         /* --- Quote Section --- */
         .quote-section { padding: 80px 0; background-color: var(--mambu-background-alt); }
         .quote-container { max-width: 800px; margin: 0 auto; text-align: center; }
-        .quote-icon { font-size: 36px; color: var(--mambu-primary-green); opacity: 0.3; margin-bottom: 15px; }
-        .quote-icon i { display: inline-block; } /* Helps rendering */
+        .quote-icon { font-size: 36px; color: var(--mambu-primary-green); opacity: 0.3; margin-bottom: 15px; line-height: 1; /* Prevent extra space */ }
+        .quote-icon svg { width: 36px; height: 36px; } /* Control quote icon size */
         .quote-text { font-size: 22px; line-height: 1.7; color: var(--mambu-text-dark); font-style: italic; margin-bottom: 20px; font-weight: 400; }
         .quote-author { font-weight: 500; color: var(--mambu-text-medium); font-size: 15px; }
         .quote-author span { color: var(--mambu-primary-green); font-weight: 600; display: block; margin-top: 5px; }
@@ -117,8 +127,12 @@
             display: flex; flex-direction: column; box-shadow: var(--shadow-light);
         }
         .card:hover { transform: translateY(-5px); border-color: rgba(58, 183, 104, 0.5); /* Softer green border */ box-shadow: var(--shadow-medium); }
-        .card-icon { width: 45px; height: 45px; background-color: rgba(58, 183, 104, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; flex-shrink: 0; }
-        .card-icon i { font-size: 18px; color: var(--mambu-primary-green); display: inline-block; /* Helps rendering */ }
+        .card-icon {
+             width: 45px; height: 45px; background-color: rgba(58, 183, 104, 0.1);
+             border-radius: 50%; display: flex; align-items: center; justify-content: center;
+             margin-bottom: 20px; flex-shrink: 0; color: var(--mambu-primary-green); /* Icon color */
+        }
+        .card-icon svg { width: 20px; height: 20px; } /* Control actual SVG size */
         .card-text { color: var(--mambu-text-medium); font-size: 15px; flex-grow: 1; margin-bottom: 0; }
 
         /* --- Experience Section --- */
@@ -137,7 +151,14 @@
         .experience-details { flex-grow: 1; }
         .experience-details ul { padding-left: 0; list-style: none; margin-top: 0; }
         .experience-details li { padding-left: 22px; margin-bottom: 10px; position: relative; line-height: 1.6; color: var(--mambu-text-medium); font-size: 15px; }
-        .experience-details li::before { content: '\f00c'; /* Font Awesome check icon */ font-family: 'Font Awesome 5 Free'; font-weight: 900; color: var(--mambu-primary-green); position: absolute; left: 0; top: 3px; /* Adjusted top */ font-size: 13px; }
+        /* SVG Checkmark bullet point */
+        .experience-details li::before {
+             content: '';
+             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%233AB768'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd' /%3E%3C/svg%3E");
+             background-repeat: no-repeat;
+             background-size: contain;
+             position: absolute; left: 0; top: 5px; width: 14px; height: 14px;
+        }
         .experience-details strong { font-weight: 600; color: var(--mambu-text-dark); }
         .experience-details p, .experience-details ul { margin-bottom: 0; } /* Prevent extra bottom margin */
 
@@ -153,26 +174,24 @@
             border: 1px solid transparent; box-shadow: none; transition: var(--transition);
         }
         .contact-item:hover { border-color: rgba(58, 183, 104, 0.5); background-color: var(--mambu-background-light); box-shadow: var(--shadow-light); transform: translateY(-5px); }
-        .contact-icon { width: 45px; height: 45px; background-color: rgba(58, 183, 104, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .contact-icon i { font-size: 18px; color: var(--mambu-primary-green); display: inline-block; /* Helps rendering */ }
+        .contact-icon {
+             width: 45px; height: 45px; background-color: rgba(58, 183, 104, 0.1);
+             border-radius: 50%; display: flex; align-items: center; justify-content: center;
+             flex-shrink: 0; color: var(--mambu-primary-green); /* Icon color */
+        }
+        .contact-icon svg { width: 20px; height: 20px; } /* Control actual SVG size */
+         /* Specific size for LinkedIn logo if needed */
+        .contact-icon svg.linkedin-svg { width: 18px; height: 18px; }
         .contact-info { display: flex; flex-direction: column; overflow: hidden; min-width: 0; /* Helps prevent flex overflow */ }
         .contact-info h3 { font-size: 16px; margin-bottom: 3px; }
-        /* Style for the link text specifically */
         .contact-info a {
-            color: var(--mambu-primary-green); /* Keep link color */
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            line-height: 1.4;
-            word-break: break-word; /* Allow breaking long words/URLs */
-            overflow-wrap: break-word; /* Preferred way to wrap */
-            display: inline-block; /* Ensures wrapping behaves */
+            color: var(--mambu-primary-green); text-decoration: none; font-weight: 500; font-size: 15px;
+            line-height: 1.4; word-break: break-word; overflow-wrap: break-word; display: inline-block;
         }
         .contact-info a:hover { color: var(--mambu-dark-green); }
         .contact-info p { /* If you had non-link text */
              color: var(--mambu-text-medium); font-weight: 500; font-size: 15px; line-height: 1.4; margin: 0;
         }
-
 
         /* --- Footer --- */
         .footer { padding: 35px 0; background-color: var(--mambu-text-dark); color: rgba(255, 255, 255, 0.75); text-align: center; width: 100%; }
@@ -210,6 +229,8 @@
             .nav-link { margin: 0 0 18px 0; font-size: 18px; width: 100%; padding: 8px 0; color: var(--mambu-text-dark); font-weight: 500; }
             .nav-links .download-btn { display: inline-flex; margin: 25px 0 0 0; width: auto; align-self: flex-start; }
             .close-menu { display: block; position: absolute; top: 20px; right: 25px; background: none; border: none; font-size: 26px; color: var(--mambu-text-dark); cursor: pointer; z-index: 1001; }
+             /* Close button SVG needs explicit size */
+            .close-menu svg { width: 26px; height: 26px; }
             .hero { padding: 120px 0 60px; }
             h1 { font-size: 36px; }
             .hero-subtitle { font-size: 17px; }
@@ -233,7 +254,8 @@
             .experience-details li, .experience-details p { font-size: 14px; }
             .contact-item { padding: 20px; gap: 15px; }
             .contact-icon { width: 40px; height: 40px; }
-            .contact-icon i { font-size: 16px; }
+            .contact-icon svg { width: 18px; height: 18px; } /* Adjust icon size */
+            .contact-icon svg.linkedin-svg { width: 16px; height: 16px; } /* Adjust linkedin icon size */
             .contact-info h3 { font-size: 15px; }
             .contact-info a, .contact-info p { font-size: 14px; }
         }
@@ -257,17 +279,21 @@
         <div class="container nav-container">
             <a href="#" class="logo">Eric <span>Oberndorfer</span></a>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
-                <i class="fas fa-bars"></i>
+                 <!-- Hamburger SVG -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <nav class="nav-links" id="navLinks">
                 <button class="close-menu" id="closeMenu" aria-label="Close menu">
-                    <i class="fas fa-times"></i>
+                     <!-- Close (X) SVG -->
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
                 <a href="#alignment" class="nav-link">Alignment</a>
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <a href="Eric_Oberndorfer_Resume_2025.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
-                    <i class="fas fa-file-pdf"></i> View Resume
+                    <!-- PDF Icon SVG -->
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3v-4a1 1 0 00-1-1H7a1 1 0 00-1 1v4H3a1 1 0 110-2V4zm2 0v8h8V4H6zm1 9a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" /></svg>
+                    View Resume
                 </a>
             </nav>
         </div>
@@ -290,7 +316,10 @@
     <!-- Quote Section -->
     <section class="quote-section">
         <div class="container quote-container fade-in">
-            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+            <div class="quote-icon">
+                <!-- Quote Icon SVG -->
+                <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v4a2 2 0 002 2h2v2a1 1 0 102 0v-2h1a1 1 0 100-2H7V5h2a1 1 0 100-2H6V2zm8 0a1 1 0 00-1 1v1h-1a2 2 0 00-2 2v4a2 2 0 002 2h2v2a1 1 0 102 0v-2h1a1 1 0 100-2h-1V5h2a1 1 0 100-2h-1V2a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+            </div>
             <p class="quote-text">
                 We are in it for the long run. The pillars of our approach provide personalised and continuous strategic value to help you scale and grow for today and into the future.
             </p>
@@ -311,25 +340,37 @@
             <div class="cards-grid">
                 <!-- Card 1: Partnership -->
                 <div class="card fade-in delay-1">
-                    <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                    <div class="card-icon">
+                         <!-- Handshake SVG -->
+                         <svg viewBox="0 0 20 20"><path d="M15.5 8.25a.75.75 0 00-1.5 0V10a.75.75 0 001.5 0V8.25zM10 8.25a.75.75 0 00-1.5 0V10a.75.75 0 001.5 0V8.25zM4.5 8.25a.75.75 0 00-1.5 0V10a.75.75 0 001.5 0V8.25z"></path><path fill-rule="evenodd" d="M9.06 4.765c.32-.184.718-.23 1.097-.14l.07.017a3.53 3.53 0 011.846.9l.18.187a3.53 3.53 0 01.9 1.846l.017.07c.09.38.04.777-.14 1.097l-3.75 6.5a.75.75 0 01-1.318 0l-3.75-6.5c-.18-.32-.23-.718-.14-1.097l.017-.07a3.53 3.53 0 01.9-1.846l.187-.18a3.53 3.53 0 011.846-.9l.07-.017c.38-.09.777-.04 1.097.14zm.508 1.732a.75.75 0 10-1.06 1.06l3.708 3.708 1.296-2.246-3.944-3.522z" clip-rule="evenodd"></path></svg>
+                    </div>
                     <h3 class="card-title">Strategic Partnership & Advocacy</h3>
                     <p class="card-text">Proven ability to build high-trust, long-term relationships (SMB to enterprise). I focus on deeply understanding client needs and acting as their internal advocate, fostering collaboration to achieve shared goals.</p>
                 </div>
                 <!-- Card 2: Value & Growth -->
                 <div class="card fade-in delay-2">
-                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="card-icon">
+                         <!-- Chart Line SVG -->
+                        <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M1.22 7.22a.75.75 0 011.06 0L6 10.94l3.72-3.72a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L1.22 8.28a.75.75 0 010-1.06zm15.56 4.28a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H8a.75.75 0 010-1.5h7.94l-1.72-1.72a.75.75 0 111.06-1.06l3 3z" clip-rule="evenodd"></path></svg>
+                    </div>
                     <h3 class="card-title">Value Realization & Growth</h3>
                     <p class="card-text">Track record of identifying opportunities, revitalizing key accounts, and implementing strategies that lead to measurable client value, retention, and growth (e.g., significant retention improvements across 14 states).</p>
                 </div>
                 <!-- Card 3: Technical Acumen -->
                 <div class="card fade-in delay-3">
-                    <div class="card-icon"><i class="fas fa-cogs"></i></div>
+                    <div class="card-icon">
+                        <!-- Cogs SVG -->
+                        <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.49 3.17a.75.75 0 01.478.87l-.5 4.5a.75.75 0 01-1.49-.16l.5-4.5a.75.75 0 011.012-.71zm.915 7.804a.75.75 0 01.012 1.06l-1.15 1.151a.75.75 0 01-1.061-1.06l1.15-1.151a.75.75 0 011.049-.001zM8.506 3.17a.75.75 0 011.012.71l.5 4.5a.75.75 0 01-1.49.16l-.5-4.5a.75.75 0 01.478-.87zM7.58 12.013a.75.75 0 011.049 0l1.151 1.15a.75.75 0 11-1.06 1.061l-1.151-1.15a.75.75 0 01.012-1.061zM5.999 8.01a.75.75 0 01.87-.478l4.5.5a.75.75 0 01-.16 1.49l-4.5-.5a.75.75 0 01-.71-.961l-.051-.451zm1.804 6.415a.75.75 0 011.06 0l.5.5a.75.75 0 01-1.06 1.061l-.5-.5a.75.75 0 010-1.06zm7.804-5.914a.75.75 0 01-.71.961l-4.5.5a.75.75 0 01-.16-1.49l4.5-.5a.75.75 0 01.87.478l.051.451zm-2.393 6.914a.75.75 0 011.06 1.06l-.5.5a.75.75 0 11-1.06-1.061l.5-.5z" clip-rule="evenodd"></path></svg>
+                    </div>
                     <h3 class="card-title">Technical Acumen & Adoption</h3>
                      <p class="card-text">Experience implementing innovative technologies (telemetry, cameras, software) and managing complex technical projects (network expansions). Adept at helping clients leverage platform capabilities effectively.</p>
                 </div>
                 <!-- Card 4: Enablement -->
                  <div class="card fade-in delay-4">
-                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="card-icon">
+                         <!-- Graduation Cap SVG -->
+                        <svg viewBox="0 0 20 20"><path d="M10.362 2.219a1.25 1.25 0 00-1.224 0L1.998 5.83a1.25 1.25 0 00-.748 1.147V11a.75.75 0 001.5 0V7.26l7-3.112 7 3.112V11a.75.75 0 001.5 0V6.977a1.25 1.25 0 00-.748-1.147L10.362 2.219z"></path><path fill-rule="evenodd" d="M3 2.75A.75.75 0 013.75 2h12a.75.75 0 010 1.5h-12A.75.75 0 013 2.75zm-1.5 6.5a.75.75 0 01.75-.75h15.5a.75.75 0 010 1.5H2.25a.75.75 0 01-.75-.75zM2.25 13a.75.75 0 000 1.5h.041a3.001 3.001 0 005.918 0h5.582a3.001 3.001 0 005.918 0H19.5a.75.75 0 000-1.5H2.25z" clip-rule="evenodd"></path></svg>
+                    </div>
                     <h3 class="card-title">Client Enablement & Training</h3>
                      <p class="card-text">Recognized top trainer skilled in developing and delivering impactful onboarding and training programs (revamped company-wide modules). Committed to empowering users for self-sufficiency and platform mastery.</p>
                 </div>
@@ -429,12 +470,16 @@
          <div class="container">
             <div class="section-header fade-in">
                 <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">I'm excited about the opportunity at Mambu. Please feel free to reach out.</p>
+                <!-- STRONGER CALL TO ACTION -->
+                <p class="section-subtitle">Ready to discuss how my client-focused approach and strategic experience can benefit Mambu? Let's connect.</p>
              </div>
             <div class="contact-container">
                 <!-- Email -->
                 <div class="contact-item fade-in delay-1">
-                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-icon">
+                        <!-- Envelope SVG -->
+                        <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.75 4A1.75 1.75 0 014.5 2.25h11A1.75 1.75 0 0117.25 4v.144c-.41-.177-.86-.323-1.336-.438a14.14 14.14 0 00-1.032-.106H5.118a14.216 14.216 0 00-1.032.106 5.196 5.196 0 00-1.336.438V4zm0 2.565V16A1.75 1.75 0 004.5 17.75h11A1.75 1.75 0 0017.25 16V6.565c-.41.177-.86.323-1.336.438a14.386 14.386 0 01-11.828 0 5.196 5.196 0 01-1.336-.438zM4.34 8.131a13.06 13.06 0 0011.32 0L10 11.869l-5.66-3.738z" clip-rule="evenodd"></path></svg>
+                    </div>
                     <div class="contact-info">
                         <h3>Email</h3>
                         <a href="mailto:E.Obern@gmail.com">E.Obern@gmail.com</a>
@@ -442,7 +487,10 @@
                 </div>
                 <!-- Phone -->
                 <div class="contact-item fade-in delay-2">
-                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="contact-icon">
+                        <!-- Phone SVG -->
+                        <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5h-1.55a16.036 16.036 0 01-15.193-15.193A1.5 1.5 0 013.5 2H5.95zm1.374.095a.5.5 0 00-.488.392l-.716 3.223a.5.5 0 00.35.588l.933.267c.791.226.97.86.58 1.382a12.542 12.542 0 01-7.586-7.586c-.522-.39-.956-.21-1.382-.58l-.267-.933a.5.5 0 00-.588-.35l-3.223-.716a.5.5 0 00-.392.488V3.5z" clip-rule="evenodd"></path></svg>
+                    </div>
                      <div class="contact-info">
                         <h3>Phone</h3>
                         <a href="tel:619-733-5323">619-733-5323</a>
@@ -450,10 +498,12 @@
                 </div>
                 <!-- LinkedIn -->
                 <div class="contact-item fade-in delay-3">
-                     <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+                     <div class="contact-icon">
+                         <!-- LinkedIn SVG -->
+                         <svg class="linkedin-svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                     </div>
                     <div class="contact-info">
                          <h3>LinkedIn</h3>
-                         <!-- Shortened display text, full link in href -->
                          <a href="https://linkedin.com/in/ericoberndorfer" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
                      </div>
                 </div>
